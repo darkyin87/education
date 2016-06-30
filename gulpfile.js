@@ -47,12 +47,6 @@ gulp.task('sass', ['fonts'], function () {
         .pipe(gulp.dest(scss.out));
 });
 
-gulp.task('copy', function() {
-    gulp.src(source + 'index.html')
-    // Perform minification tasks, etc here
-    .pipe(gulp.dest(dest));
-});
-
 // compile html templates
 gulp.task('nunjucks', function () {
   return gulp.src('src/pages/*.html')
