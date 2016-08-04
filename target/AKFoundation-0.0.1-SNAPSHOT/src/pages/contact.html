@@ -1,0 +1,73 @@
+{% extends "layouts.html" %}
+{% block content %}
+    {% include "partials/nav.html" %}
+    <div class="content" >
+      <div class="container">
+        <div class="row">
+        <!-- SECTION HEADER -->
+        <div class="fn-section-header">
+           <h2 class="section-title text-center">Get in Touch</h2>
+           <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan venenatis lectus <br>sed sollicitudin. Duis in odio ex. Sed elementum varius enim.</p>
+        </div>
+        <!-- / END SECTION HEADER -->
+
+        <div class="row">
+          <div class="col-md-12">
+            <!--small><i></i>Add alerts if form ok... success, else error.</i></small-->
+          <div class="alert alert-success"><strong><span class="glyphicon glyphicon-send"></span> Success! Message sent. (If form ok!)</strong></div>
+            <div class="alert alert-danger"><span class="glyphicon glyphicon-alert"></span><strong> Error! Please check the inputs. (If form error!)</strong></div>
+          </div>
+          <form role="form" action="" method="post" >
+            <div class="col-lg-6">
+              <div class="well well-sm"><strong><i class="glyphicon glyphicon-ok "></i> Required Field</strong></div>
+              <div class="form-group">
+                <label for="InputName">Your Name</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required>
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-ok "></i></span></div>
+              </div>
+              <div class="form-group">
+                <label for="InputEmail">Your Email</label>
+                <div class="input-group">
+                  <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Enter Email" required  >
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-ok "></i></span></div>
+              </div>
+              <div class="form-group">
+                <label for="InputMessage">Message</label>
+                <div class="input-group">
+                  <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-ok "></i></span></div>
+              </div>
+              <div class="form-group">
+                <label for="InputReal">What is 4+3? (Simple Spam Checker)</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" name="InputReal" id="InputReal" required>
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-ok "></i></span></div>
+              </div>
+              <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+            </div>
+          </form>
+          <hr class="featurette-divider hidden-lg">
+          <ul>
+          <ol class="col-lg-4 text-center">
+             <i class="fa fa-map-marker fa-2x"></i>
+             <p>265 6th Avenue, 5th Floor,
+              <br> New York, NY 10001
+             </p>
+             <br />
+          </ol>
+          <ol class="col-lg-4 text-center">
+             <i class="fa fa-envelope-o fa-2x"></i>
+             <p>info@yourcompany.com</p>
+             <br />
+          </ol>
+          <ol class="col-lg-4 text-center">
+             <i class="fa fa-phone fa-2x"></i>
+             <p> +1 200 123 4567</p>
+             <br />
+         </ol>
+         </ul>
+      </div>
+
+    {% include "partials/footer.html" %}
+{% endblock %}
