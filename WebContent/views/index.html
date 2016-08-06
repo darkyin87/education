@@ -9,7 +9,7 @@
 
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="views/css/main.css" />
+    <link rel="stylesheet" href="/AKFoundation/views/css/main.css" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -18,14 +18,25 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- Stripe -->
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+    <!-- Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
-    <script src="angular/module/carousel.js"></script>
-    <script src="angular/controller/carousel_controller.js"></script>
-    <script src="angular/service/carousel_service.js"></script>
+
+    <!-- Modules -->
+    <!--<script src="/AKFoundation/angular/module/carousel.js"></script>-->
+    <script src="/AKFoundation/angular/module/app.js"></script>
+    <!-- Controllers -->
+    <script src="/AKFoundation/angular/controller/carousel_controller.js"></script>
+    <script src="/AKFoundation/angular/controller/user_controller.js"></script>
+    <!-- Services -->
+    <script src="/AKFoundation/angular/service/carousel_service.js"></script>
+    <script src="/AKFoundation/angular/service/user_service.js"></script>
 
   </head>
-  <body ng-app="carousel" data-spy="scroll" data-target=".navbar" data-offset="50">
+  <body ng-app="app" data-spy="scroll" data-target=".navbar" data-offset="50">
 
 
     
@@ -233,7 +244,7 @@
       </section>
 
       <section id="donation">
-          <div ng-controller="CarouselController">
+          <div>
     <div class="container">
         <!-- Carousel================================================== -->
         <div id="myCarousel" class="carousel slide" data-interval="5000" data-ride="carousel">

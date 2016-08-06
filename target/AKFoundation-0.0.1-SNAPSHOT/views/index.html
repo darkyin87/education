@@ -9,7 +9,7 @@
 
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="views/css/main.css" />
+    <link rel="stylesheet" href="/AKFoundation/views/css/main.css" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -18,11 +18,22 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- Stripe -->
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+    <!-- Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
-    <script src="angular/module/carousel.js"></script>
-    <script src="angular/controller/carousel_controller.js"></script>
-    <script src="angular/service/carousel_service.js"></script>
+
+    <!-- Modules -->
+    <script src="/AKFoundation/angular/module/carousel.js"></script>
+    <script src="/AKFoundation/angular/module/app.js"></script>
+    <!-- Controllers -->
+    <script src="/AKFoundation/angular/controller/carousel_controller.js"></script>
+    <script src="/AKFoundation/angular/controller/user_controller.js"></script>
+    <!-- Services -->
+    <script src="/AKFoundation/angular/service/carousel_service.js"></script>
+    <script src="/AKFoundation/angular/service/user_service.js"></script>
 
   </head>
   <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -118,7 +129,7 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-     <div id="myCarousel" class="carousel slide" data-ride="carousel">
+     <div ng-app="carousel" id="myCarousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -239,18 +250,18 @@
         <div id="myCarousel" class="carousel slide" data-interval="5000" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
-                <li data-target="#myCarousel" ng-repeat="img in images" class="{active : ( === 1)}" data-slide-to=""></li>
+                <li data-target="#myCarousel" ng-repeat="img in images" class="{active : ({{img.childrenId}} === 1)}" data-slide-to="{{img.childrenId}}"></li>
             </ol>
             <div class="carousel-inner">
-                <div ng-class="{item: true, active : ({ {img.childrenId}} === 1)}" ng-repeat="img in images">
-                    <img ng-src="/AKFoundation/image/gallery/.jpg" alt="Slide numder ">
+                <div ng-class="{item: true, active : ({{img.childrenId}} === 1)}" ng-repeat="img in images">
+                    <img ng-src="/AKFoundation/image/gallery/{{img.picture}}.jpg" alt="Slide numder {{img.childrenId}}">
 
                     <div class="container">
 
                         <div class="carousel-caption">
                             <h1>Help us grow our campaign</h1>
                             <p>Every cent counts to our goal !!!</p>
-                            <p><a  class="btn btn-lg btn-primary" href="/AKFoundation/volunteer/register/" role="button"> Donate</a></p>
+                            <p><a  class="btn btn-lg btn-primary" href="/AKFoundation/volunteer/register/{{img.picture}}" role="button"> Donate</a></p>
                         </div>
                     </div>
                 </div>

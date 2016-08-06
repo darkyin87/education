@@ -23,55 +23,50 @@ import com.stripe.Stripe;
 @Controller
 @RequestMapping("/volunteer")
 public class VolunteerController {
-	
-	@Autowired
-	private UserService userService;
-	@Autowired
-	private PaymentService paymentService;
 
-	@RequestMapping(value = "/register/{imageName}", method = RequestMethod.GET)
-	public String sayHello(@PathVariable("imageName") String imageName, ModelMap model){
-		 System.out.println(" is it coming here in the controller" + imageName);
-		 model.put("imageName", imageName);
-	       // model.addAttribute("greeting", "Hello World from Spring 4 MVC");
-	        return "registerVolunteer";
-	    }
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private PaymentService paymentService;
 
-	
-	
-    
-    
+    @RequestMapping(value = "/register/{imageName}", method = RequestMethod.GET)
+    public String sayHello(@PathVariable("imageName") String imageName, ModelMap model) {
+        model.put("imageName", imageName);
+        System.out.println(" is it coming here in the controller " + imageName);
+        return "/views/registerVolunteer.html";
+    }
+
+
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-	public ResponseEntity<String> createUser(@RequestBody User user) {
-		
-		System.out.println("hhhhh" + user);
-		//System.out.println(">>>>>" + user.getTeamId());
-		user.setUserName(user.getEmailID());
-		Stripe.apiKey = "sk_test_A8qmlj5uDMq96RXkRhvqHjvP";
-		
-		Map<String, Object> chargeParams = new HashMap<String, Object>();
-		  chargeParams.put("amount", 1000); // amount in cents, again
-		  chargeParams.put("currency", "usd");
-		  chargeParams.put("source", user.getToken());
-		  chargeParams.put("description", "Example charge");
-		  
-		  User returnUser = userService.createUser(user);
-		  PaymentDetail paymentDetail = paymentService.checkChildrenPresent(1);
-		  System.out.println("pay ment detail s-- " + paymentDetail);
-		  
-		  if(paymentDetail != null )
-		  {
-			  System.out.println("going inside the if condition");
-			  paymentDetail.setDonationAmount(10+paymentDetail.getDonationAmount());
-			  System.out.println(paymentDetail);
-			  paymentService.updatePayment(paymentDetail);
-			  System.out.println("after ther service call");
-		  }else {
-		  
-		  System.out.println("going inside the else condition");
-		  paymentService.savePayment(paymentDetail);
-		  }
-		  
+    public ResponseEntity<String> createUser(@RequestBody User user) {
+
+        System.out.println("hhhhh" + user);
+        //System.out.println(">>>>>" + user.getTeamId());
+        user.setUserName(user.getEmailID());
+        Stripe.apiKey = "sk_test_A8qmlj5uDMq96RXkRhvqHjvP";
+
+        Map<String, Object> chargeParams = new HashMap<String, Object>();
+        chargeParams.put("amount", 1000); // amount in cents, again
+        chargeParams.put("currency", "usd");
+        chargeParams.put("source", user.getToken());
+        chargeParams.put("description", "Example charge");
+
+        User returnUser = userService.createUser(user);
+        PaymentDetail paymentDetail = paymentService.checkChildrenPresent(1);
+        System.out.println("pay ment detail s-- " + paymentDetail);
+
+        if (paymentDetail != null) {
+            System.out.println("going inside the if condition");
+            paymentDetail.setDonationAmount(10 + paymentDetail.getDonationAmount());
+            System.out.println(paymentDetail);
+            paymentService.updatePayment(paymentDetail);
+            System.out.println("after ther service call");
+        } else {
+
+            System.out.println("going inside the else condition");
+            paymentService.savePayment(paymentDetail);
+        }
+
 		 /* try {
 			Charge charge = Charge.create(chargeParams);
 		} catch (AuthenticationException e) {
@@ -90,11 +85,11 @@ public class VolunteerController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
-		//User returnUser = userService.createUser(user);
+        //User returnUser = userService.createUser(user);
 
-		
-		return new ResponseEntity<String>("sucess", HttpStatus.OK);
-	}
+
+        return new ResponseEntity<String>("sucess", HttpStatus.OK);
+    }
 	
 	
 	/*@RequestMapping(value = "/create", method = RequestMethod.POST)
@@ -114,5 +109,5 @@ public class VolunteerController {
 		teamService.addPlayersToTeam(teamPlayers);
 		return new ResponseEntity<String>("sucess", HttpStatus.OK);
 	}*/
-	 
+
 }

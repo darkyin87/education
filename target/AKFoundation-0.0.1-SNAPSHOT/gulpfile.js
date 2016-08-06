@@ -1,8 +1,8 @@
 /* gulpfile.js */
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
-    nunjucksRender = require('gulp-nunjucks-render');
-
+    nunjucksRender = require('gulp-nunjucks-render'),
+    nunjucks = require('nunjucks');
 
 // source and distribution folder
 var source = 'src/',
@@ -51,7 +51,13 @@ gulp.task('sass', ['fonts'], function () {
 gulp.task('nunjucks', function () {
   return gulp.src('src/pages/*.html')
     .pipe(nunjucksRender({
-      path: ['src/templates'] // String or Array
+      path: ['src/templates'], // String or Array
+      envOptions: {
+          tags: {
+            variableStart: '<$',
+            variableEnd: '$>'
+          }
+      }
     }))
     .pipe(gulp.dest(dest));
 });

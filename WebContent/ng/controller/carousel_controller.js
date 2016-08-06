@@ -1,8 +1,7 @@
 'use strict';
  
-carousel.controller('CarouselController', ['$scope', 'CarouselService','$http','$location', function($scope, CarouselService,$http,$location) {
-	
-	
+app.controller('CarouselController', ['$scope', 'CarouselService','$http','$location', function($scope, CarouselService,$http,$location) {
+
 	$scope.firstName = 'Gokul'
 
 	$scope.data = {
@@ -14,7 +13,7 @@ carousel.controller('CarouselController', ['$scope', 'CarouselService','$http','
 	$scope.fetchVolunteerPage = function(callback){
 		console.log("test method");
 		
-		$http.get( "/AKFoundation/volunteer/register" );	
+		$http.get( "/AKFoundation/volunteer/register" );
 	
 	};
 	

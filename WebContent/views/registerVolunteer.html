@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Arul and kavitha</title>
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="/AKFoundation/views/css/main.css" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Stripe -->
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
+
+    <!-- Modules -->
+    <!--<script src="/AKFoundation/angular/module/carousel.js"></script>-->
+    <script src="/AKFoundation/angular/module/app.js"></script>
+    <!-- Controllers -->
+    <script src="/AKFoundation/angular/controller/carousel_controller.js"></script>
+    <script src="/AKFoundation/angular/controller/user_controller.js"></script>
+    <!-- Services -->
+    <script src="/AKFoundation/angular/service/carousel_service.js"></script>
+    <script src="/AKFoundation/angular/service/user_service.js"></script>
+
+  </head>
+  <body ng-app="app" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+
+    
+    <!-- Top static navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="./index.html">##LOGO##</a>
+        </div>
+
+
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                Our Story<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#journey">Journey</a></li>
+                <li><a href="#people">People</a></li>
+              </ul>
+            </li>
+
+
+            <li>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">What we do<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li><a href="#vision">Vision and Objective</a></li>
+                <li><a href="#recruitment">Recruitment process for students and mentors</a></li>
+                <li><a href="#guidelines">Guidelines</a></li>
+              </ul>
+            </li>
+            <li><a href="#join">Join Us</a></li>
+            <li><a href="#donate">Donate</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="/login" class="dropdown-toggle" data-toggle="dropdown">Login/Signup<span class="caret"></span></a>
+              <ul class="dropdown-menu dropdown-lr" role="menu">
+                <div class="col-lg-12">
+                    <div class="text-center"><h3><b>Log In</b></h3></div>
+                      <form id="ajax-login-form" action="/login" method="post" role="form" autocomplete="off">
+                        <div class="form-group">
+                          <label for="username">Username</label>
+                          <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" autocomplete="off">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" autocomplete="off">
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-7">
+                                    <input type="checkbox" tabindex="3" name="remember" id="remember">
+                                    <label for="remember"> Remember Me</label>
+                                </div>
+                                <div class="col-xs-5 pull-right">
+                                    <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-success" value="Log In">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="text-center">
+                                        <a href="/forgot" tabindex="5" class="forgot-password">Forgot Password?</a>
+                                    </div>
+                                    <div class="text-center">
+                                        <a href="/register" tabindex="6" class="register">Register</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" class="hide" name="token" id="token" value="a465a2791ae0bae853cf4bf485dbe1b6">
+                      </form>
+                    </div>
+                </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    <div class="content">
+        <script>
+  Stripe.setPublishableKey('pk_test_HDGRdtAbsQP3JT5FGgY3NaNz');
+
+
+/* $(function() {
+	  var $form = $('#payment-form');
+	  $form.submit(function(event) {
+	    // Disable the submit button to prevent repeated clicks:
+	    $form.find('.submit').prop('disabled', true);
+
+	    // Request a token from Stripe:
+	    Stripe.card.createToken($form, stripeResponseHandler);
+
+	    // Prevent the form from being submitted:
+	    return false;
+	  });
+	});
+
+function stripeResponseHandler(status, response) {
+	  // Grab the form:
+	  var $form = $('#payment-form');
+
+	  if (response.error) { // Problem!
+
+	    // Show the errors on the form:
+	    $form.find('.payment-errors').text(response.error.message);
+	    $form.find('.submit').prop('disabled', false); // Re-enable submission
+
+	  } else { // Token was created!
+
+	    // Get the token ID:
+	    var token = response.id;
+		alert('token created'+ token);
+	    // Insert the token ID into the form so it gets submitted to the server:
+	    $form.append($('<input type="hidden" name="stripeToken">').val(token));
+
+	    // Submit the form:
+	    $form.get(0).submit();
+	  }
+	}; */
+
+</script>
+
+<div>
+    <!-- Middle content section -->
+    <div class="middle">
+        <div class="container" ng-controller="UserController as userCtrl">
+            <div id="messages" class="alert alert-success"
+                 data-ng-show="messages" data-ng-bind="messages"></div>
+            <div class="col-md-9 content">
+                <form ng-submit="userCtrl.submit()" name="myForm" id="payment-form" class="form-horizontal">
+                    <!-- 				<form action="/volunteer" method="POST" id="payment-form">
+                     -->
+                    <h1>${imageName}</h1>
+
+                    <span class="payment-errors"></span>
+                    <input type="hidden" ng-model="userCtrl.user.id" />
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-lable" for="fname">First
+                                Name</label>
+                            <div class="col-md-7">
+                                <input type="text" ng-model="userCtrl.user.firstName" id="fname"
+                                       class="username form-control input-sm"
+                                       placeholder="Enter your first name" required ng-minlength="3" />
+                                <div class="has-error" ng-show="myForm.$dirty">
+                                        <span ng-show="myForm.fname.$error.required">This is a
+                                            required field</span> <span ng-show="myForm.fname.$error.minlength">Minimum
+                                            length required is 3</span> <span ng-show="myForm.fname.$invalid">This
+                                            field is invalid </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-lable" for="lname">Last
+                                Name</label>
+                            <div class="col-md-7">
+                                <input type="text" ng-model="userCtrl.user.lastName" id="lname"
+                                       class="username form-control input-sm"
+                                       placeholder="Enter your name" required ng-minlength="3" />
+                                <div class="has-error" ng-show="myForm.$dirty">
+                                        <span ng-show="myForm.lname.$error.required">This is a
+                                            required field</span> <span ng-show="myForm.lname.$error.minlength">Minimum
+                                            length required is 3</span> <span ng-show="myForm.lname.$invalid">This
+                                            field is invalid </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-lable" for="email">Email</label>
+                            <div class="col-md-7">
+                                <input type="email" ng-model="userCtrl.user.emailID" id="email"
+                                       class="username form-control input-sm"
+                                       placeholder="Enter your Email" required />
+                                <div class="has-error" ng-show="myForm.$dirty">
+                                        <span ng-show="myForm.email.$error.required">This is a
+                                            required field</span> <span ng-show="myForm.email.$invalid">This
+                                            field is invalid </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-lable" for="phoneno">Phone
+                                Number</label>
+                            <div class="col-md-7">
+                                <input type="number" ng-model="userCtrl.user.phoneNumber"
+                                       id="phonenbr" class="username form-control input-sm"
+                                       placeholder="Enter your Phone Number" required
+                                       ng-minlength="10" />
+                                <div class="has-error" ng-show="myForm.$dirty">
+                                        <span ng-show="myForm.phonenbr.$error.required">This is
+                                            a required field</span> <span
+                                        ng-show="myForm.phonenbr.$error.minlength">Minimum
+                                            length required is 3</span> <span
+                                        ng-show="myForm.phonenbr.$error.minlength">Max length
+                                            required is 10</span> <span ng-show="myForm.phonenbr.$invalid">This
+                                            field is invalid </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-lable" for="addressline1">Address
+                                Line 1</label>
+                            <div class="col-md-7">
+                                <input type="addres" ng-model="userCtrl.user.addressLine1"
+                                       id="address" class="username form-control input-sm"
+                                       placeholder="Enter your Address" required />
+                                <div class="has-error" ng-show="myForm.$dirty">
+                                        <span ng-show="myForm.address.$error.required">This is a
+                                            required field</span> <span ng-show="myForm.address.$invalid">This
+                                            field is invalid </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-lable" for="city">City</label>
+                            <div class="col-md-7">
+                                <input type="city" ng-model="userCtrl.user.city" id="city"
+                                       class="username form-control input-sm"
+                                       placeholder="Enter your City" required />
+                                <div class="has-error" ng-show="myForm.$dirty">
+                                        <span ng-show="myForm.city.$error.required">This is a
+                                            required field</span> <span ng-show="myForm.city.$invalid">This
+                                            field is invalid </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-lable" for="state">State</label>
+                            <div class="col-md-7">
+                                <input type="state" ng-model="userCtrl.user.state" id="state"
+                                       class="username form-control input-sm"
+                                       placeholder="Enter your state" required />
+                                <div class="has-error" ng-show="myForm.$dirty">
+                                        <span ng-show="myForm.state.$error.required">This is a
+                                            required field</span> <span ng-show="myForm.state.$invalid">This
+                                            field is invalid </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-lable" for="zipCode">Zip
+                                Code</label>
+                            <div class="col-md-7">
+                                <input type="number" ng-model="userCtrl.user.zipCode"
+                                       id="zipCode" class="username form-control input-sm"
+                                       placeholder="Enter your zip code"
+                                       ng-minlength="{{user.zipCode.minlength}}"
+                                       ng-maxlength="{{user.zipCode.maxlength}}"
+                                       ng-required='user.zipCode.required' />
+                                <div class="has-error" ng-show="myForm.$dirty">
+                                        <span ng-show="myForm.zipCode.$error.required">This is a
+                                            required field</span> <span ng-show="myForm.zipCode.$invalid">This
+                                            field is invalid </span> <span
+                                        ng-show="myForm.zipCode.$error.minlength">Minimum
+                                            length required is 5</span> <span
+                                        ng-show="myForm.zipCode.$error.maxlength">Max length
+                                            required is 5</span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-lable" for="password">Password</label>
+                            <div class="col-md-7">
+                                <input type="password" ng-model="userCtrl.user.password"
+                                       id="password" class="username form-control input-sm"
+                                       placeholder="Enter your Password" required />
+                                <div class="has-error" ng-show="myForm.$dirty">
+                                        <span ng-show="myForm.password.$error.required">This is
+                                            a required field</span> <span ng-show="myForm.password.$invalid">This
+                                            field is invalid </span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-lable" for="image">Password</label>
+                            <img ng-src="/AKFoundation/image/gallery/${imageName}.jpg" alt="Slide numder {{img.childrenId}}">
+                        </div>
+                    </div>
+
+                    <br />
+
+
+
+                    <input type="hidden" name="childrenId"  ng-model="userCtrl.user.childrenId" ng-init="userCtrl.user.childrenId='biy'" />
+
+
+                    <label for="chkPassport">
+                        <input type="checkbox" id="chkPassport" ng-model="ShowPassport" ng-change="ShowHide()" />
+                        Do you want to Donate money
+                    </label>
+
+
+                    <div class="row" ng-show="ShowPassport">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-lable" for="amount">Donation Amount</label>
+                            <div class="col-md-7">
+                                <input type="amount" ng-model="userCtrl.user.amount"
+                                       id="amount" class="amount form-control input-sm"
+                                       placeholder="Donation Amount" required />
+                                <div class="has-error" ng-show="myForm.$dirty">
+                                        <span ng-show="myForm.amount.$error.required">This is
+                                            a required field</span> <span ng-show="myForm.amount.$invalid">This
+                                            field is invalid </span>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="form-row">
+                            <label>
+                                <span>Card Number</span>
+                                <input type="text" size="20" data-stripe="number">
+                            </label>
+                        </div>
+
+                        <div class="form-row">
+                            <label>
+                                <span>Expiration (MM/YY)</span>
+                                <input type="text" size="2" data-stripe="exp_month">
+                            </label>
+                            <span> / </span>
+                            <input type="text" size="2" data-stripe="exp_year">
+                        </div>
+
+                        <div class="form-row">
+                            <label>
+                                <span>CVC</span>
+                                <input type="text" size="4" data-stripe="cvc">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-actions floatRight">
+                            <input type="submit" value="Register" id="register"
+                                   class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid">
+
+
+                        </div>
+                    </div>
+
+                    <!--   <input type="submit" class="submit" value="Submit Payment">
+                     -->
+                </form>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4">
+                        <h3>ARUL &amp; KAVITHA</h3>
+                        <ul class="list-unstyled">
+                          <li><a href="./blog.html">Blog</a></li>
+                          <li><a href="./faq.html">FAQs</a></li>
+                          <li><a href="./contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>Around the Web</h3>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>About Us</h3>
+                        <p>In a far far away kingdom there lived a king.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; Your Website 2016
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  </body>
+</html>

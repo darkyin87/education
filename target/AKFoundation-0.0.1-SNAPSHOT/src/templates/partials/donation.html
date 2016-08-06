@@ -7,7 +7,7 @@
                 <li data-target="#myCarousel" ng-repeat="img in images" class="{active : ({{img.childrenId}} === 1)}" data-slide-to="{{img.childrenId}}"></li>
             </ol>
             <div class="carousel-inner">
-                <div ng-class="{item: true, active : ({ {img.childrenId}} === 1)}" ng-repeat="img in images">
+                <div ng-class="{item: true, active : ({{img.childrenId}} === 1)}" ng-repeat="img in images">
                     <img ng-src="/AKFoundation/image/gallery/{{img.picture}}.jpg" alt="Slide numder {{img.childrenId}}">
 
                     <div class="container">

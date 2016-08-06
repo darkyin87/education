@@ -1,6 +1,6 @@
 'use strict';
  
-carousel.factory('CarouselService', ['$http', '$q',function($http, $q){
+app.factory('CarouselService', ['$http', '$q',function($http, $q){
 	
 	
 	return {

@@ -108,6 +108,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 		super.addViewControllers(registry);
 		registry.addViewController("login/form").setViewName("login");
 		registry.addViewController("welcome").setViewName("welcome");
+        registry.addViewController("volunteer/register").setViewName("registerVolunteer");
 		registry.addViewController("admin").setViewName("admin");
 
 	}

@@ -1,16 +1,18 @@
 'use strict';
 
-user
+app
 		.controller(
 				'UserController',
 				[
 						'$scope',
+						'$routeParams',
 						'UserService',
 						'$http',
-						function($scope, UserService, $http) {
-
+						function($scope, $routeParams, UserService, $http) {
+debugger;
 							var self = this;
 							var localUser = '';
+                            $scope.imageName = $routeParams.imageName;
 
 							self.create = function(user) {
 								UserService
