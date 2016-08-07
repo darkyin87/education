@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="app" lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,7 +36,7 @@
     <script src="/AKFoundation/angular/service/user_service.js"></script>
 
   </head>
-  <body ng-app="app" data-spy="scroll" data-target=".navbar" data-offset="50">
+  <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
 
     
@@ -183,7 +183,7 @@ function stripeResponseHandler(status, response) {
                 <form ng-submit="userCtrl.submit()" name="myForm" id="payment-form" class="form-horizontal">
                     <!-- 				<form action="/volunteer" method="POST" id="payment-form">
                      -->
-                    <h1>${imageName}</h1>
+                    <h1>{{imageName}}</h1>
 
                     <span class="payment-errors"></span>
                     <input type="hidden" ng-model="userCtrl.user.id" />
@@ -354,7 +354,7 @@ function stripeResponseHandler(status, response) {
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label class="col-md-2 control-lable" for="image">Password</label>
-                            <img ng-src="/AKFoundation/image/gallery/${imageName}.jpg" alt="Slide numder {{img.childrenId}}">
+                            <img ng-src="/AKFoundation/image/gallery/{{imageName}}.jpg" alt="Slide numder {{img.childrenId}}">
                         </div>
                     </div>
 

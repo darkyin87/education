@@ -1,5 +1,4 @@
 'use strict';
- 
 app.factory('UserService', ['$http', '$q',function($http, $q){
     return {
          

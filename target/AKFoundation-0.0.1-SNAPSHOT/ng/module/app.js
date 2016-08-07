@@ -1,12 +1,13 @@
 'use strict';
-var user = angular.module("user",  ["ngRoute"]);
-
-//debugger;
-//user.config(['$routeProvider', function($routeProvider) {
-//console.log(":::I AM HERE:::")
-//$routeProvider.
-//  when('/views//registerVolunteer.html/#:imageName', {
-//    templateUrl: '/views/registerVolunteer.html',
-//    controller: 'UserController'
-//  })
+//var user = angular.module("user",  ["ngRoute"]);
+var app = angular.module("app", ["ngRoute"]);
+//app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+//    $routeProvider
+//        .when('/boy', {
+//          controller: 'UserController',
+//           controllerAs: 'userCtrl'
+//        }).
+//        otherwise({
+//            redirectTo: '/'
+//        })
 //}]);

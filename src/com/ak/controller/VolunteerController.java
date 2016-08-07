@@ -29,10 +29,8 @@ public class VolunteerController {
     @Autowired
     private PaymentService paymentService;
 
-    @RequestMapping(value = "/register/{imageName}", method = RequestMethod.GET)
-    public String sayHello(@PathVariable("imageName") String imageName, ModelMap model) {
-        model.put("imageName", imageName);
-        System.out.println(" is it coming here in the controller " + imageName);
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String sayHello(ModelMap model) {
         return "/views/registerVolunteer.html";
     }
 

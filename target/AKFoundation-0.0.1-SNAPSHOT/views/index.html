@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="app" lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,7 +26,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
 
     <!-- Modules -->
-    <script src="/AKFoundation/angular/module/carousel.js"></script>
+    <!--<script src="/AKFoundation/angular/module/carousel.js"></script>-->
     <script src="/AKFoundation/angular/module/app.js"></script>
     <!-- Controllers -->
     <script src="/AKFoundation/angular/controller/carousel_controller.js"></script>
@@ -129,7 +129,7 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-     <div ng-app="carousel" id="myCarousel" class="carousel slide" data-ride="carousel">
+     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -244,31 +244,33 @@
       </section>
 
       <section id="donation">
-          <div ng-controller="CarouselController">
-    <div class="container">
-        <!-- Carousel================================================== -->
-        <div id="myCarousel" class="carousel slide" data-interval="5000" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#myCarousel" ng-repeat="img in images" class="{active : ({{img.childrenId}} === 1)}" data-slide-to="{{img.childrenId}}"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div ng-class="{item: true, active : ({{img.childrenId}} === 1)}" ng-repeat="img in images">
-                    <img ng-src="/AKFoundation/image/gallery/{{img.picture}}.jpg" alt="Slide numder {{img.childrenId}}">
+          <div>
+    <div ng-controller="CarouselController">
+        <div class="container">
+            <!-- Carousel================================================== -->
+            <div id="myCarousel" class="carousel slide" data-interval="5000" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" ng-repeat="img in images" class="{active : ({{img.childrenId}} === 1)}" data-slide-to="{{img.childrenId}}"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div ng-class="{item: true, active : ({{img.childrenId}} === 1)}" ng-repeat="img in images">
+                        <img ng-src="/AKFoundation/image/gallery/{{img.picture}}.jpg" alt="Slide numder {{img.childrenId}}">
 
-                    <div class="container">
+                        <div class="container">
 
-                        <div class="carousel-caption">
-                            <h1>Help us grow our campaign</h1>
-                            <p>Every cent counts to our goal !!!</p>
-                            <p><a  class="btn btn-lg btn-primary" href="/AKFoundation/volunteer/register/{{img.picture}}" role="button"> Donate</a></p>
+                            <div class="carousel-caption">
+                                <h1>Help us grow our campaign</h1>
+                                <p>Every cent counts to our goal !!!</p>
+                                <p><a  class="btn btn-lg btn-primary" href="/AKFoundation/volunteer/register/#/{{img.picture}}" role="button"> Donate</a></p>
+                            </div>
                         </div>
                     </div>
+
                 </div>
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a> </div>
 
-            </div>
-            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a> </div>
-
+        </div>
     </div>
 </div>
       </section>

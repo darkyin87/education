@@ -1,5 +1,5 @@
 'use strict';
- 
+
 app.factory('CarouselService', ['$http', '$q',function($http, $q){
 	
 	

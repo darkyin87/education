@@ -1,2 +1,1 @@
-'use strict';
-var carousel = angular.module('carousel', ['ngRoute']);
+var carousel = angular.module('carousel');

@@ -98,7 +98,6 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 //        UrlBasedViewResolver resolver = new UrlBasedViewResolver();
 //        resolver.setPrefix("");
 //        resolver.setSuffix("");
-//        resolver.setViewClass(JstlView.class);
 //        return resolver;
 //    }
 
