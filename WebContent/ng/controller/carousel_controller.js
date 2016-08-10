@@ -1,6 +1,8 @@
 'use strict';
  
-app.controller('CarouselController', ['$scope', 'CarouselService','$http','$location', function($scope, CarouselService,$http,$location) {
+app.controller('CarouselController', ['$scope', 'CarouselService','$http','$location',
+
+function($scope, CarouselService,$http,$location) {
     $scope.firstName = 'Gokul'
 
     $scope.data = {

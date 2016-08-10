@@ -5,7 +5,6 @@ com/ak/service/ChildrenServiceImpl.class
 com/ak/model/User.class
 com/ak/repository/UserRolesRepository.class
 com/ak/controller/VolunteerController.class
-com/ak/controller/DefaultController.class
 com/ak/controller/ChildrenController.class
 com/ak/service/PaymentServiceImpl.class
 com/ak/controller/PaymentController.class
@@ -23,6 +22,7 @@ com/ak/security/SecurityConfiguration.class
 com/ak/model/PaymentDetail.class
 com/ak/repository/UserRepository.class
 com/ak/security/IAuthenticationFacade.class
+com/ak/controller/IndexController.class
 com/ak/security/SecurityUser.class
 com/ak/repository/ChildrenRepository.class
 com/ak/init/AKFoundationInitializer.class

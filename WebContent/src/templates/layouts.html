@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="app" lang="en">
+<html ng-app="AngularSpringApp" lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,7 +26,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
 
     <!-- Modules -->
-    <!--<script src="/AKFoundation/angular/module/carousel.js"></script>-->
     <script src="/AKFoundation/angular/module/app.js"></script>
     <!-- Controllers -->
     <script src="/AKFoundation/angular/controller/carousel_controller.js"></script>
@@ -38,8 +37,8 @@
   </head>
   <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
-
-    {% block content %} {% endblock %}
+    <div ng-view>
+    </div>
 
 
 

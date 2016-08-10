@@ -29,12 +29,6 @@ public class VolunteerController {
     @Autowired
     private PaymentService paymentService;
 
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String sayHello(ModelMap model) {
-        return "/views/registerVolunteer.html";
-    }
-
-
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<String> createUser(@RequestBody User user) {
 
