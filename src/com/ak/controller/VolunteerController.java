@@ -44,41 +44,18 @@ public class VolunteerController {
         chargeParams.put("description", "Example charge");
 
         User returnUser = userService.createUser(user);
-        PaymentDetail paymentDetail = paymentService.checkChildrenPresent(1);
-        System.out.println("pay ment detail s-- " + paymentDetail);
-
-        if (paymentDetail != null) {
-            System.out.println("going inside the if condition");
-            paymentDetail.setDonationAmount(10 + paymentDetail.getDonationAmount());
-            System.out.println(paymentDetail);
-            paymentService.updatePayment(paymentDetail);
-            System.out.println("after ther service call");
-        } else {
+        PaymentDetail paymentDetail = new PaymentDetail();
+        System.out.println("the return user is --  " + returnUser);
+        System.out.println("pay ment detail s-- " + returnUser.getUserID());
+        paymentDetail.setChildrenId(user.getChildrenId());
+        paymentDetail.setDonationAmount(user.getAmount());
+        paymentDetail.setFrequency("0");
+        paymentDetail.setUserId(returnUser.getUserID()+"");
+        
 
             System.out.println("going inside the else condition");
             paymentService.savePayment(paymentDetail);
-        }
-
-		 /* try {
-			Charge charge = Charge.create(chargeParams);
-		} catch (AuthenticationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvalidRequestException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (APIConnectionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (CardException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (APIException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-        //User returnUser = userService.createUser(user);
-
+       
 
         return new ResponseEntity<String>("sucess", HttpStatus.OK);
     }

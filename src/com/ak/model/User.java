@@ -56,6 +56,11 @@ import lombok.Data;
 	private String enabled;
 	@Transient
 	private String token;
+	@Transient
+	private int childrenId;
+	@Transient
+	private int amount;
+	
 	
 	
 
@@ -183,8 +188,22 @@ import lombok.Data;
 	public void setToken(String token) {
 		this.token = token;
 	}
-
 	
+	public int getChildrenId() {
+		return childrenId;
+	}
+
+	public void setChildrenId(int childrenId) {
+		this.childrenId = childrenId;
+	}
+	
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
 	
 	
 }

@@ -13,8 +13,10 @@ app.controller(
     function($scope, $routeParams, $route, $location, UserService, $http) {
         var self = this;
         var localUser = '';
-        $scope.imageName = $routeParams.imageName;
+        $scope.imageName = $location.url().split("/")[2];
+		$scope.childrenId = $location.url().split("/")[3];
 
+		
         self.create = function(user) {
             UserService
                     .create(user)

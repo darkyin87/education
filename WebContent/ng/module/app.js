@@ -4,7 +4,7 @@ var AngularSpringApp = {};
 var app = angular.module("AngularSpringApp", ["ngRoute"]);
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $routeProvider
-        .when('/register/:imageName', {
+        .when('/register/:imageName/:childrenId', {
           templateUrl: '/AKFoundation/views/registerVolunteer.html',
           controller: 'UserController',
           controllerAs: 'userCtrl'
