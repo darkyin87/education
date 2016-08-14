@@ -1,259 +1,247 @@
 <div>
-    <!-- Middle content section -->
-    <div class="middle">
-        <div class="container">
-            <div id="messages" class="alert alert-success"
-                 data-ng-show="messages" data-ng-bind="messages"></div>
-            <div class="col-md-9 content">
-                <form ng-submit="userCtrl.submit()" name="myForm" id="payment-form" class="form-horizontal">
-                    <!-- 				<form action="/volunteer" method="POST" id="payment-form">
+	<!-- Middle content section -->
+	<div class="middle">
+		<div class="container">
+			<div id="messages" class="alert alert-success"
+				data-ng-show="messages" data-ng-bind="messages"></div>
+			<div class="col-md-9 content">
+				<form ng-submit="userCtrl.submit()" name="myForm" id="payment-form"
+					class="form-horizontal">
+					<!-- 				<form action="/volunteer" method="POST" id="payment-form">
                      -->
-                    <h1>{{imageName}}</h1>
+					<h1>{{imageName}}</h1>
 
-                    <span class="payment-errors"></span>
-                    <input type="hidden" ng-model="userCtrl.user.id" />
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <label class="col-md-2 control-lable" for="fname">First
-                                Name</label>
-                            <div class="col-md-7">
-                                <input type="text" ng-model="userCtrl.user.firstName" id="fname"
-                                       class="username form-control input-sm"
-                                       placeholder="Enter your first name" required ng-minlength="3" />
-                                <div class="has-error" ng-show="myForm.$dirty">
-                                        <span ng-show="myForm.fname.$error.required">This is a
-                                            required field</span> <span ng-show="myForm.fname.$error.minlength">Minimum
-                                            length required is 3</span> <span ng-show="myForm.fname.$invalid">This
-                                            field is invalid </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <label class="col-md-2 control-lable" for="lname">Last
-                                Name</label>
-                            <div class="col-md-7">
-                                <input type="text" ng-model="userCtrl.user.lastName" id="lname"
-                                       class="username form-control input-sm"
-                                       placeholder="Enter your name" required ng-minlength="3" />
-                                <div class="has-error" ng-show="myForm.$dirty">
-                                        <span ng-show="myForm.lname.$error.required">This is a
-                                            required field</span> <span ng-show="myForm.lname.$error.minlength">Minimum
-                                            length required is 3</span> <span ng-show="myForm.lname.$invalid">This
-                                            field is invalid </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <label class="col-md-2 control-lable" for="email">Email</label>
-                            <div class="col-md-7">
-                                <input type="email" ng-model="userCtrl.user.emailID" id="email"
-                                       class="username form-control input-sm"
-                                       placeholder="Enter your Email" required />
-                                <div class="has-error" ng-show="myForm.$dirty">
-                                        <span ng-show="myForm.email.$error.required">This is a
-                                            required field</span> <span ng-show="myForm.email.$invalid">This
-                                            field is invalid </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+					<span class="payment-errors"></span> <input type="hidden"
+						ng-model="userCtrl.user.id" />
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="fname">First
+								Name</label>
+							<div class="col-md-7">
+								<input type="text" ng-model="userCtrl.user.firstName" id="fname"
+									class="username form-control input-sm"
+									placeholder="Enter your first name" required ng-minlength="3" />
+								<div class="has-error" ng-show="myForm.$dirty">
+									<span ng-show="myForm.fname.$error.required">This is a
+										required field</span> <span ng-show="myForm.fname.$error.minlength">Minimum
+										length required is 3</span> <span ng-show="myForm.fname.$invalid">This
+										field is invalid </span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="lname">Last
+								Name</label>
+							<div class="col-md-7">
+								<input type="text" ng-model="userCtrl.user.lastName" id="lname"
+									class="username form-control input-sm"
+									placeholder="Enter your name" required ng-minlength="3" />
+								<div class="has-error" ng-show="myForm.$dirty">
+									<span ng-show="myForm.lname.$error.required">This is a
+										required field</span> <span ng-show="myForm.lname.$error.minlength">Minimum
+										length required is 3</span> <span ng-show="myForm.lname.$invalid">This
+										field is invalid </span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="email">Email</label>
+							<div class="col-md-7">
+								<input type="email" ng-model="userCtrl.user.emailID" id="email"
+									class="username form-control input-sm"
+									placeholder="Enter your Email" required />
+								<div class="has-error" ng-show="myForm.$dirty">
+									<span ng-show="myForm.email.$error.required">This is a
+										required field</span> <span ng-show="myForm.email.$invalid">This
+										field is invalid </span>
+								</div>
+							</div>
+						</div>
+					</div>
 
 
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <label class="col-md-2 control-lable" for="phoneno">Phone
-                                Number</label>
-                            <div class="col-md-7">
-                                <input type="number" ng-model="userCtrl.user.phoneNumber"
-                                       id="phonenbr" class="username form-control input-sm"
-                                       placeholder="Enter your Phone Number" required
-                                       ng-minlength="10" />
-                                <div class="has-error" ng-show="myForm.$dirty">
-                                        <span ng-show="myForm.phonenbr.$error.required">This is
-                                            a required field</span> <span
-                                        ng-show="myForm.phonenbr.$error.minlength">Minimum
-                                            length required is 3</span> <span
-                                        ng-show="myForm.phonenbr.$error.minlength">Max length
-                                            required is 10</span> <span ng-show="myForm.phonenbr.$invalid">This
-                                            field is invalid </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="phoneno">Phone
+								Number</label>
+							<div class="col-md-7">
+								<input type="number" ng-model="userCtrl.user.phoneNumber"
+									id="phonenbr" class="username form-control input-sm"
+									placeholder="Enter your Phone Number" required
+									ng-minlength="10" />
+								<div class="has-error" ng-show="myForm.$dirty">
+									<span ng-show="myForm.phonenbr.$error.required">This is
+										a required field</span> <span
+										ng-show="myForm.phonenbr.$error.minlength">Minimum
+										length required is 3</span> <span
+										ng-show="myForm.phonenbr.$error.minlength">Max length
+										required is 10</span> <span ng-show="myForm.phonenbr.$invalid">This
+										field is invalid </span>
+								</div>
+							</div>
+						</div>
+					</div>
 
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <label class="col-md-2 control-lable" for="addressline1">Address
-                                Line 1</label>
-                            <div class="col-md-7">
-                                <input type="addres" ng-model="userCtrl.user.addressLine1"
-                                       id="address" class="username form-control input-sm"
-                                       placeholder="Enter your Address" required />
-                                <div class="has-error" ng-show="myForm.$dirty">
-                                        <span ng-show="myForm.address.$error.required">This is a
-                                            required field</span> <span ng-show="myForm.address.$invalid">This
-                                            field is invalid </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="addressline1">Address
+								Line 1</label>
+							<div class="col-md-7">
+								<input type="addres" ng-model="userCtrl.user.addressLine1"
+									id="address" class="username form-control input-sm"
+									placeholder="Enter your Address" required />
+								<div class="has-error" ng-show="myForm.$dirty">
+									<span ng-show="myForm.address.$error.required">This is a
+										required field</span> <span ng-show="myForm.address.$invalid">This
+										field is invalid </span>
+								</div>
+							</div>
+						</div>
+					</div>
 
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <label class="col-md-2 control-lable" for="city">City</label>
-                            <div class="col-md-7">
-                                <input type="city" ng-model="userCtrl.user.city" id="city"
-                                       class="username form-control input-sm"
-                                       placeholder="Enter your City" required />
-                                <div class="has-error" ng-show="myForm.$dirty">
-                                        <span ng-show="myForm.city.$error.required">This is a
-                                            required field</span> <span ng-show="myForm.city.$invalid">This
-                                            field is invalid </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="city">City</label>
+							<div class="col-md-7">
+								<input type="city" ng-model="userCtrl.user.city" id="city"
+									class="username form-control input-sm"
+									placeholder="Enter your City" required />
+								<div class="has-error" ng-show="myForm.$dirty">
+									<span ng-show="myForm.city.$error.required">This is a
+										required field</span> <span ng-show="myForm.city.$invalid">This
+										field is invalid </span>
+								</div>
+							</div>
+						</div>
+					</div>
 
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <label class="col-md-2 control-lable" for="state">State</label>
-                            <div class="col-md-7">
-                                <input type="state" ng-model="userCtrl.user.state" id="state"
-                                       class="username form-control input-sm"
-                                       placeholder="Enter your state" required />
-                                <div class="has-error" ng-show="myForm.$dirty">
-                                        <span ng-show="myForm.state.$error.required">This is a
-                                            required field</span> <span ng-show="myForm.state.$invalid">This
-                                            field is invalid </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <label class="col-md-2 control-lable" for="zipCode">Zip
-                                Code</label>
-                            <div class="col-md-7">
-                                <input type="number" ng-model="userCtrl.user.zipCode"
-                                       id="zipCode" class="username form-control input-sm"
-                                       placeholder="Enter your zip code"
-                                       ng-minlength="{{user.zipCode.minlength}}"
-                                       ng-maxlength="{{user.zipCode.maxlength}}"
-                                       ng-required='user.zipCode.required' />
-                                <div class="has-error" ng-show="myForm.$dirty">
-                                        <span ng-show="myForm.zipCode.$error.required">This is a
-                                            required field</span> <span ng-show="myForm.zipCode.$invalid">This
-                                            field is invalid </span> <span
-                                        ng-show="myForm.zipCode.$error.minlength">Minimum
-                                            length required is 5</span> <span
-                                        ng-show="myForm.zipCode.$error.maxlength">Max length
-                                            required is 5</span>
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="state">State</label>
+							<div class="col-md-7">
+								<input type="state" ng-model="userCtrl.user.state" id="state"
+									class="username form-control input-sm"
+									placeholder="Enter your state" required />
+								<div class="has-error" ng-show="myForm.$dirty">
+									<span ng-show="myForm.state.$error.required">This is a
+										required field</span> <span ng-show="myForm.state.$invalid">This
+										field is invalid </span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="zipCode">Zip
+								Code</label>
+							<div class="col-md-7">
+								<input type="number" ng-model="userCtrl.user.zipCode"
+									id="zipCode" class="username form-control input-sm"
+									placeholder="Enter your zip code" required/>
+								<div class="has-error" ng-show="myForm.$dirty">
+									<span ng-show="myForm.zipCode.$error.required">This is a
+										required field</span> <span ng-show="myForm.zipCode.$invalid">This
+										field is invalid </span> <span
+										ng-show="myForm.zipCode.$error.minlength">Minimum
+										length required is 5</span> <span
+										ng-show="myForm.zipCode.$error.maxlength">Max length
+										required is 5</span>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <label class="col-md-2 control-lable" for="password">Password</label>
-                            <div class="col-md-7">
-                                <input type="password" ng-model="userCtrl.user.password"
-                                       id="password" class="username form-control input-sm"
-                                       placeholder="Enter your Password" required />
-                                <div class="has-error" ng-show="myForm.$dirty">
-                                        <span ng-show="myForm.password.$error.required">This is
-                                            a required field</span> <span ng-show="myForm.password.$invalid">This
-                                            field is invalid </span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="password">Password</label>
+							<div class="col-md-7">
+								<input type="password" ng-model="userCtrl.user.password"
+									id="password" class="username form-control input-sm"
+									placeholder="Enter your Password" required />
+								<div class="has-error" ng-show="myForm.$dirty">
+									<span ng-show="myForm.password.$error.required">This is
+										a required field</span> <span ng-show="myForm.password.$invalid">This
+										field is invalid </span>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+								</div>
+							</div>
+						</div>
+					</div>
 
 
 
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <label class="col-md-2 control-lable" for="image">Password</label>
-                            <img ng-src="/AKFoundation/image/gallery/{{imageName}}.jpg" alt="Slide numder {{img.childrenId}}">
-                        </div>
-                    </div>
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="image">Thanks
+								For Supporting Me</label> <img
+								ng-src="/AKFoundation/image/gallery/{{imageName}}.jpg"
+								alt="Slide numder {{img.childrenId}}">
+						</div>
+					</div>
 
-                    <br />
-
-
-
-                    <input type="hidden" name="childrenId"  ng-model="userCtrl.user.childrenId" ng-init="userCtrl.user.childrenId=childrenId" />
-
-
-                    <label for="chkPassport">
-                        <input type="checkbox" id="chkPassport" ng-model="ShowPassport" ng-change="ShowHide()" />
-                        Do you want to Donate money
-                    </label>
+					<br /> <input type="hidden" name="childrenId"
+						ng-model="userCtrl.user.childrenId"
+						ng-init="userCtrl.user.childrenId=childrenId" /> <label
+						for="chkPassport"> <input type="checkbox" id="chkPassport"
+						ng-model="userCtrl.user.donationYes" ng-change="ShowHide()" /> Do
+						you want to Donate money
+					</label>
 
 
-                    <div class="row" ng-show="ShowPassport">
-                        <div class="form-group col-md-12">
-                            <label class="col-md-2 control-lable" for="amount">Donation Amount</label>
-                            <div class="col-md-7">
-                                <input type="amount" ng-model="userCtrl.user.amount"
-                                       id="amount" class="amount form-control input-sm"
-                                       placeholder="Donation Amount" required />
-                                <div class="has-error" ng-show="myForm.$dirty">
-                                        <span ng-show="myForm.amount.$error.required">This is
-                                            a required field</span> <span ng-show="myForm.amount.$invalid">This
-                                            field is invalid </span>
+					<div class="row" ng-show="userCtrl.user.donationYes">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="amount">Donation
+								Amount</label>
+							<div class="col-md-7">
+								<input type="amount" ng-model="userCtrl.user.amount" id="amount"
+									class="amount form-control input-sm"
+									placeholder="Donation Amount" />
 
-                                </div>
-                            </div>
-                        </div>
+							</div>
+						</div>
 
 
 
 
-                        <div class="form-row">
-                            <label>
-                                <span>Card Number</span>
-                                <input type="text" size="20" data-stripe="number">
-                            </label>
-                        </div>
+						<div class="form-row">
+							<label> <span>Card Number</span> <input type="text"
+								size="20" data-stripe="number">
+							</label>
+						</div>
 
-                        <div class="form-row">
-                            <label>
-                                <span>Expiration (MM/YY)</span>
-                                <input type="text" size="2" data-stripe="exp_month">
-                            </label>
-                            <span> / </span>
-                            <input type="text" size="2" data-stripe="exp_year">
-                        </div>
+						<div class="form-row">
+							<label> <span>Expiration (MM/YY)</span> <input
+								type="text" size="2" data-stripe="exp_month">
+							</label> <span> / </span> <input type="text" size="2"
+								data-stripe="exp_year">
+						</div>
 
-                        <div class="form-row">
-                            <label>
-                                <span>CVC</span>
-                                <input type="text" size="4" data-stripe="cvc">
-                            </label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-actions floatRight">
-                            <input type="submit" value="Register" id="register"
-                                   class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid">
+						<div class="form-row">
+							<label> <span>CVC</span> <input type="text" size="4"
+								data-stripe="cvc">
+							</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-actions floatRight">
+							<input type="submit" value="Register" id="register"
+								class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid">
 
 
-                        </div>
-                    </div>
+						</div>
+					</div>
 
-                    <!--   <input type="submit" class="submit" value="Submit Payment">
+					<!--   <input type="submit" class="submit" value="Submit Payment">
                      -->
-                </form>
+				</form>
 
-            </div>
+			</div>
 
 
-        </div>
-    </div>
+		</div>
+	</div>
 </div>

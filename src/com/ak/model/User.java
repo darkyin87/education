@@ -60,6 +60,8 @@ import lombok.Data;
 	private int childrenId;
 	@Transient
 	private int amount;
+	@Transient
+	private boolean donationYes;
 	
 	
 	
@@ -87,7 +89,8 @@ import lombok.Data;
 		return "User [userID=" + userID + ", firstName=" + firstName + ", lastName=" + lastName + ", emailID=" + emailID
 				+ ", phoneNumber=" + phoneNumber + ", addressLine1=" + addressLine1 + ", city=" + city + ", state="
 				+ state + ", zipCode=" + zipCode + ", password=" + password + ", userName=" + userName + ", enabled="
-				+ enabled + ",  roles=" + roles + "]";
+				+ enabled + ", token=" + token + ", childrenId=" + childrenId + ", amount=" + amount + ", donationYes="
+				+ donationYes + ", roles=" + roles + "]";
 	}
 
 	public long getUserID() {
@@ -203,6 +206,14 @@ import lombok.Data;
 
 	public void setAmount(int amount) {
 		this.amount = amount;
+	}
+	
+	public boolean getDonationYes() {
+		return donationYes;
+	}
+
+	public void setDonationYes(boolean donationYes) {
+		this.donationYes = donationYes;
 	}
 	
 	

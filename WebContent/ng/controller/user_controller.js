@@ -13,8 +13,10 @@ app.controller(
     function($scope, $routeParams, $route, $location, UserService, $http) {
         var self = this;
         var localUser = '';
-        $scope.imageName = $location.url().split("/")[2];
-		$scope.childrenId = $location.url().split("/")[3];
+        $scope.imageName = $routeParams.imageName;
+        $scope.childrenId = $routeParams.childrenId;
+        //$scope.imageName = $location.url().split("/")[2];
+		//$scope.childrenId = $location.url().split("/")[3];
 
 		
         self.create = function(user) {
@@ -42,11 +44,6 @@ app.controller(
 
         self.clear = function() {
             console.log('clearning the form');
-            self.user = {
-                fname : '',
-                lname : '',
-                email : ''
-            };
             $scope.myForm.$setPristine();
         }
 
@@ -55,9 +52,17 @@ app.controller(
             $scope.user = self.user;
             var form = angular.element(document
                     .querySelector('#payment-form'))[0];
-            console.log('form ==' + form);
+            console.log('form ==' + self.user.donationYes);
             // self.create(self.user);
             // form.find('.submit').prop('disabled', true);
+            
+            
+            if(self.user.donationYes == false)
+            	{
+                	self.create($scope.user);
+
+            	
+            	}else{
             angular.element(document
                     .getElementById('register'))[0].disabled = true;
 
@@ -66,6 +71,7 @@ app.controller(
                     stripeResponseHandler);
 
             return false;
+            	}
 
         };
 

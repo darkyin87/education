@@ -35,17 +35,20 @@ public class VolunteerController {
         System.out.println("hhhhh" + user);
         //System.out.println(">>>>>" + user.getTeamId());
         user.setUserName(user.getEmailID());
+        User returnUser = userService.createUser(user);
+
+        if(user.getDonationYes()){
+        
         Stripe.apiKey = "sk_test_A8qmlj5uDMq96RXkRhvqHjvP";
 
         Map<String, Object> chargeParams = new HashMap<String, Object>();
-        chargeParams.put("amount", 1000); // amount in cents, again
+        chargeParams.put("amount", user.getAmount()*100); // amount in cents, again
         chargeParams.put("currency", "usd");
         chargeParams.put("source", user.getToken());
         chargeParams.put("description", "Example charge");
 
-        User returnUser = userService.createUser(user);
         PaymentDetail paymentDetail = new PaymentDetail();
-        System.out.println("the return user is --  " + returnUser);
+        System.out.println("the return user is --  " + user.getChildrenId());
         System.out.println("pay ment detail s-- " + returnUser.getUserID());
         paymentDetail.setChildrenId(user.getChildrenId());
         paymentDetail.setDonationAmount(user.getAmount());
@@ -56,7 +59,7 @@ public class VolunteerController {
             System.out.println("going inside the else condition");
             paymentService.savePayment(paymentDetail);
        
-
+        }
         return new ResponseEntity<String>("sucess", HttpStatus.OK);
     }
 	
