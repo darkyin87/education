@@ -62,6 +62,8 @@ import lombok.Data;
 	private int amount;
 	@Transient
 	private boolean donationYes;
+	@Transient
+	private String chosenPlace;
 	
 	
 	
@@ -180,12 +182,12 @@ import lombok.Data;
 		return enabled;
 	}
 
-	public void setEnabled(String enabled) {
-		this.enabled = enabled;
+	public void setChosenPlace(String chosenPlace) {
+		this.chosenPlace = chosenPlace;
 	}
 
-	public String getToken() {
-		return token;
+	public String getChosenPlace() {
+		return chosenPlace;
 	}
 
 	public void setToken(String token) {
@@ -214,6 +216,14 @@ import lombok.Data;
 
 	public void setDonationYes(boolean donationYes) {
 		this.donationYes = donationYes;
+	}
+	
+	public void setEnabled(String enabled) {
+		this.enabled = enabled;
+	}
+
+	public String getToken() {
+		return token;
 	}
 	
 	

@@ -177,75 +177,11 @@
 						</div>
 					</div>
 
-					<div class="row">
-						<div class="form-group col-md-12">
-							<label class="col-md-2 control-lable" for="addressline1">Address
-								Line 1</label>
-							<div class="col-md-7">
-								<input type="addres" ng-model="userCtrl.user.addressLine1"
-									id="address" class="username form-control input-sm"
-									placeholder="Enter your Address" required />
-								<div class="has-error" ng-show="myForm.$dirty">
-									<span ng-show="myForm.address.$error.required">This is a
-										required field</span> <span ng-show="myForm.address.$invalid">This
-										field is invalid </span>
-								</div>
-							</div>
-						</div>
-					</div>
+			
+			
+				 <div><input autocomplete="nope" ng-model="userCtrl.user.chosenPlace" googleplace/></div>
+					 <div>selection is: {{userCtrl.user.chosenPlace}}</div>
 
-					<div class="row">
-						<div class="form-group col-md-12">
-							<label class="col-md-2 control-lable" for="city">City</label>
-							<div class="col-md-7">
-								<input type="city" ng-model="userCtrl.user.city" id="city"
-									class="username form-control input-sm"
-									placeholder="Enter your City" required />
-								<div class="has-error" ng-show="myForm.$dirty">
-									<span ng-show="myForm.city.$error.required">This is a
-										required field</span> <span ng-show="myForm.city.$invalid">This
-										field is invalid </span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="form-group col-md-12">
-							<label class="col-md-2 control-lable" for="state">State</label>
-							<div class="col-md-7">
-								<input type="state" ng-model="userCtrl.user.state" id="state"
-									class="username form-control input-sm"
-									placeholder="Enter your state" required />
-								<div class="has-error" ng-show="myForm.$dirty">
-									<span ng-show="myForm.state.$error.required">This is a
-										required field</span> <span ng-show="myForm.state.$invalid">This
-										field is invalid </span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-md-12">
-							<label class="col-md-2 control-lable" for="zipCode">Zip
-								Code</label>
-							<div class="col-md-7">
-								<input type="number" ng-model="userCtrl.user.zipCode"
-									id="zipCode" class="username form-control input-sm"
-									placeholder="Enter your zip code" required/>
-								<div class="has-error" ng-show="myForm.$dirty">
-									<span ng-show="myForm.zipCode.$error.required">This is a
-										required field</span> <span ng-show="myForm.zipCode.$invalid">This
-										field is invalid </span> <span
-										ng-show="myForm.zipCode.$error.minlength">Minimum
-										length required is 5</span> <span
-										ng-show="myForm.zipCode.$error.maxlength">Max length
-										required is 5</span>
-
-								</div>
-							</div>
-						</div>
-					</div>
 					<div class="row">
 						<div class="form-group col-md-12">
 							<label class="col-md-2 control-lable" for="password">Password</label>
@@ -278,7 +214,7 @@
 						ng-model="userCtrl.user.childrenId"
 						ng-init="userCtrl.user.childrenId=childrenId" /> <label
 						for="chkPassport"> <input type="checkbox" id="chkPassport"
-						ng-model="userCtrl.user.donationYes" ng-change="ShowHide()" /> Do
+						ng-model="userCtrl.user.donationYes" ng-change="ShowHide()"  ng-init="userCtrl.user.donationYes=false"/> Do
 						you want to Donate money
 					</label>
 
@@ -336,6 +272,7 @@
 		</div>
 	</div>
 </div>
+
     </div>
     
     <!-- Footer -->

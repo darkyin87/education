@@ -25,7 +25,7 @@ import javax.annotation.Resource;
 import javax.sql.DataSource;
 
 
-@ComponentScan("com.ak.controller,com.ak.service")
+@ComponentScan("com.ak.controller,com.ak.service,com.ak.util")
 @EnableWebMvc
 @EnableTransactionManagement
 @PropertySource("classpath:/com/ak/resources/application.properties")

@@ -90,3 +90,15 @@ footer .footer-below {
   font-size: 27px;
   margin: 20px;
 }
+
+/** parallelogram */
+.content h3 {
+    text-decoration:none;
+    padding:4px 10px;
+    border-radius:3px;
+    transform: skew(-10deg);
+    -o-transform: skew(-10deg);
+    -moz-transform: skew(-10deg);
+    -webkit-transform: skew(-10deg);
+    color:#757575;
+}

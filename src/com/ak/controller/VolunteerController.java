@@ -18,6 +18,7 @@ import com.ak.model.PaymentDetail;
 import com.ak.model.User;
 import com.ak.service.PaymentService;
 import com.ak.service.UserService;
+import com.ak.util.Utility;
 import com.stripe.Stripe;
 
 @Controller
@@ -28,6 +29,8 @@ public class VolunteerController {
     private UserService userService;
     @Autowired
     private PaymentService paymentService;
+    @Autowired
+    private Utility utility;
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<String> createUser(@RequestBody User user) {
@@ -35,7 +38,16 @@ public class VolunteerController {
         System.out.println("hhhhh" + user);
         //System.out.println(">>>>>" + user.getTeamId());
         user.setUserName(user.getEmailID());
+        
+        System.out.println(" the chosen place is --  " + user.getChosenPlace());
+        
+        user.setAddressLine1(utility.getFirstString(user.getChosenPlace(),0));
+        user.setCity(utility.getFirstString(user.getChosenPlace(),1));
+        user.setState(utility.getFirstString(user.getChosenPlace(), 2));
+
+       
         User returnUser = userService.createUser(user);
+        
 
         if(user.getDonationYes()){
         

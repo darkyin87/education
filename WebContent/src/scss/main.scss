@@ -115,3 +115,18 @@ footer .footer-below {
 .email .ng-dirty .ng-invalid-email {
 	background-color: yellow;
 }
+
+
+/** parallelogram */
+.content h4 {
+    text-align: center;
+    width: 80%;
+    text-decoration:none;
+    padding:4px 10px;
+    transform: skew(-10deg);
+    -o-transform: skew(-10deg);
+    -moz-transform: skew(-10deg);
+    -webkit-transform: skew(-10deg);
+    color: white;
+    background-color: $text-color;
+}
