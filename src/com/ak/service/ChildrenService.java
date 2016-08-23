@@ -10,6 +10,8 @@ public interface ChildrenService {
 
 		
 		public List<Children> getAll();
+		
+		public List<Object[]> findWithDonation();
 
 		
 	}

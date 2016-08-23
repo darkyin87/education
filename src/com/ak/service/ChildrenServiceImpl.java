@@ -22,5 +22,15 @@ public class ChildrenServiceImpl implements ChildrenService{
 	
 		
 	}
+	
+	
+	@Override
+	public List<Object[]> findWithDonation() {
+		List<Object[]> childrenInSer = childrenRepository.findWithDonation();
+		System.out.println("childrenIn serv --  " + childrenInSer.size());
+		return childrenRepository.findWithDonation();
+		
+	}
+	
 
 }

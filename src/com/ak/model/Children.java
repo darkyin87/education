@@ -2,8 +2,7 @@ package com.ak.model;
 
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,9 +12,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.Formula;
 
 import lombok.Data;
 
@@ -29,7 +31,7 @@ import lombok.Data;
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@Column(name="childrenId")
+	@Column(name="CHILDRENID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long childrenId;
 	@Column(name="FIRSTNAME")
@@ -42,6 +44,12 @@ import lombok.Data;
 	private String motherName;
 	@Column(name="PICTURE")
 	private String picture;
+
+	
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name="CHILDRENID")
+	List<PaymentDetail> paymentDetail;
+	
 	public long getChildrenId() {
 		return childrenId;
 	}
@@ -81,10 +89,12 @@ import lombok.Data;
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+	
 	@Override
 	public String toString() {
 		return "Children [childrenId=" + childrenId + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", fatherName=" + fatherName + ", motherName=" + motherName + ", picture=" + picture + "]";
+				+ ", fatherName=" + fatherName + ", motherName=" + motherName + ", picture=" + picture  + "]";
 	}
 	
 

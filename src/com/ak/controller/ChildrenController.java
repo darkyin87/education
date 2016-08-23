@@ -1,5 +1,6 @@
 package com.ak.controller;
 
+import java.sql.Array;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +22,17 @@ public class ChildrenController {
 	
 	 @RequestMapping(value = "/getAll", method = RequestMethod.GET)
 	 @ResponseBody
-		List<Children> getChildren() {
+		List<Object[]> getChildren() {
 		 
 		 System.out.println("inside the get all children");
 		 
 			List<Children> childrenList = childrenService.getAll();
-			System.out.println(" the size of children is --   " + childrenList);
-			return childrenList;
+			List<Object[]> childrens = childrenService.findWithDonation();
+			
+			System.out.println(" the size of children is --   " + childrens);
+			System.out.println("childrenList -- "+ childrens.get(0)[2]);
+			//return childrenList;
+			return childrens;
 		}
 	 
 

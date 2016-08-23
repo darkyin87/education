@@ -9,7 +9,6 @@ public interface PaymentService {
 	
 	public void savePayment(PaymentDetail payment);
 	public PaymentDetail checkChildrenPresent(int childrenId);
-	public void updatePayment(PaymentDetail payment);
-	
+	public void updatePayment(PaymentDetail payment);	
 
 }

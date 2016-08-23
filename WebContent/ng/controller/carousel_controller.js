@@ -12,8 +12,6 @@ function($scope, CarouselService,$http,$location) {
            };
 
     $scope.fetchVolunteerPage = function(callback){
-        console.log("test method");
-
         $http.get( "/AKFoundation/volunteer/register" );
 
     };
