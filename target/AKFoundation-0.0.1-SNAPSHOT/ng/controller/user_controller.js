@@ -17,7 +17,6 @@ app
 							var localUser = '';
 							$scope.imageName = $routeParams.imageName;
 							$scope.childrenId = $routeParams.childrenId;
-
 							//$scope.imageName = $location.url().split("/")[2];
 							//$scope.childrenId = $location.url().split("/")[3];
 

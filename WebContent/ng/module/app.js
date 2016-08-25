@@ -16,7 +16,6 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         })
 }]);
 
-
 app.directive('googleplace', function() {
     return {
         require: 'ngModel',

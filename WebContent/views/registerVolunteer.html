@@ -178,10 +178,20 @@
 						</div>
 					</div>
 
-			
-			
-				 <div><input autocomplete="nope" ng-model="userCtrl.user.chosenPlace" googleplace/></div>
-					 <div>selection is: {{userCtrl.user.chosenPlace}}</div>
+				 <div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="location">Location</label>
+							<div class="col-md-7">
+								<input autocomplete="nope" ng-model="userCtrl.user.chosenPlace" googleplace
+								placeholder="Enter your location" required id="location" class="chosenPlace form-control input-sm" />
+								<div class="has-error" ng-show="myForm.$dirty">
+									<span ng-show="myForm.chosenPlace.$error.required">This is
+										a required field</span> <span ng-show="myForm.location.$invalid">This
+										field is invalid </span>
+								</div>
+							</div>
+						</div>
+					</div>
 
 					<div class="row">
 						<div class="form-group col-md-12">
@@ -202,14 +212,14 @@
 
 
 
-					<div class="row">
+<!-- 					<div class="row">
 						<div class="form-group col-md-12">
 							<label class="col-md-2 control-lable" for="image">Thanks
 								For Supporting Me</label> <img
 								ng-src="/AKFoundation/image/gallery/{{imageName}}.jpg"
 								alt="Slide numder {{img.childrenId}}">
 						</div>
-					</div>
+					</div> -->
 
 					<br /> <input type="hidden" name="childrenId"
 						ng-model="userCtrl.user.childrenId"

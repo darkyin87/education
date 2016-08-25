@@ -36,6 +36,9 @@ footer {
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   z-index: 10;
+  left:20%;
+  bottom: 20%;
+  right: auto;
 }
 
 /* General sizing */

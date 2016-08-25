@@ -1,5 +1,5 @@
 'use strict';
- 
+
 app.controller('CarouselController', ['$scope', 'CarouselService','$http','$location',
 
 function($scope, CarouselService,$http,$location) {
@@ -12,15 +12,13 @@ function($scope, CarouselService,$http,$location) {
            };
 
     $scope.fetchVolunteerPage = function(callback){
-        console.log("test method");
-
         $http.get( "/AKFoundation/volunteer/register" );
 
     };
 
   $scope.w = window.innerWidth;
   $scope.h = window.innerHeight-20;
- 
+
     var images;
 
 
@@ -38,9 +36,25 @@ function($scope, CarouselService,$http,$location) {
      });
     };
 
-
     images(function(data){
         $scope.images = data;
+    });
+
+
+    $('#myCarousel').bind('slide.bs.carousel', function (e) {
+        var activeSlide = $('#myCarousel div.active');
+        var completedPercent = 0;
+        var remainingPercent = 100;
+        if (activeSlide.index() != -1) {
+            var completedPercent = parseFloat(angular.element(activeSlide[0]).attr('completedpercent'));
+        }
+        $('#completedPercent').text(completedPercent + "% reached");
+        $('#remainingPercent').text((100 - completedPercent) + "% remaining");
+        var progressEl = angular.element($('#myCarousel .progress-bar')[0]);
+        progressEl.css('width', completedPercent + '%');
+        var progressDangerEl = angular.element($('#myCarousel .progress-bar-danger')[0])
+        progressDangerEl.attr('aria-valuenow', (100 - completedPercent));
+        progressDangerEl.css('width', (100 - completedPercent)+'%');
     });
 
 }]);
