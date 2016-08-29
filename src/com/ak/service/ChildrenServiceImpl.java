@@ -19,6 +19,7 @@ public class ChildrenServiceImpl implements ChildrenService{
 	public List<Children> getAll() {
 		
 		return childrenRepository.findAll();
+		
 	
 		
 	}
@@ -29,6 +30,14 @@ public class ChildrenServiceImpl implements ChildrenService{
 		List<Object[]> childrenInSer = childrenRepository.findWithDonation();
 		System.out.println("childrenIn serv --  " + childrenInSer.size());
 		return childrenRepository.findWithDonation();
+		
+	}
+
+
+	@Override
+	public void save(Children children) {
+		childrenRepository.save(children);
+		// TODO Auto-generated method stub
 		
 	}
 	

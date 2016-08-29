@@ -1,5 +1,11 @@
 package com.ak.init;
 
+import java.util.List;
+import java.util.Properties;
+
+import javax.annotation.Resource;
+import javax.sql.DataSource;
+
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -13,16 +19,11 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-
-import java.util.List;
-import java.util.Properties;
-
-import javax.annotation.Resource;
-import javax.sql.DataSource;
 
 
 @ComponentScan("com.ak.controller,com.ak.service,com.ak.util")
@@ -56,6 +57,11 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 
 		return dataSource;
 	}
+	
+	 @Bean(name = "multipartResolver")
+	    public StandardServletMultipartResolver resolver() {
+	        return new StandardServletMultipartResolver();
+	    }
 
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {

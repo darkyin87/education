@@ -44,6 +44,14 @@ import lombok.Data;
 	private String motherName;
 	@Column(name="PICTURE")
 	private String picture;
+	@Column(name="COMMENTS")
+	private String comments;
+	@Column(name="AMBITION")
+	private String ambition;
+	@Column(name="SCHOOLFUNDING")
+	private int schoolFundingAmount;
+	@Column(name="COLLEGEFUNDING")
+	private int collegeFundingAmount;
 
 	
 	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
