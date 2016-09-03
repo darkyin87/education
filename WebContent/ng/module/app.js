@@ -17,6 +17,11 @@ app.config([ '$routeProvider', '$locationProvider',
 				controller : "AdminController",
 				controllerAs : "adminCtrl"
 			})
+			.when('/addTestimonials', {
+				templateUrl : "/AKFoundation/views/addTestimonials.html",
+				controller : "AdminController",
+				controllerAs : "adminCtrl"
+			})
 		} ]);
 
 app.directive('googleplace', function() {

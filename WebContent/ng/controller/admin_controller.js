@@ -10,13 +10,14 @@ app
 						'$routeParams',
 						'$route',
 						'$location',
+						'AdminService',
 						'$http',
 
-						function($scope, $routeParams, $route, $location,
+						function($scope, $routeParams, $route, $location,AdminService,
 							$http) {
 							var self = this;
 							
-								self.submitUser = function() {
+								self.addChildren = function() {
 									
 								console.log('inside the submite user method');
 								var file = $scope.myFile;
@@ -37,5 +38,34 @@ app
 								console.log('error');
 								});
 								};
+								
+								
+								self.addTestimonials = function() {
+									
+									
+									AdminService
+									.save(self.testimonial)
+									.then(
+											function successCallback(
+													response) {
+												self.clear();
+												$scope.messages = 'testimonial created Successfully'
+												// this callback will be
+												// called asynchronously
+												// when the response is
+												// available
+											},
+											function errorCallback(response) {
+												alert('fail' + response);
+												// called asynchronously if
+												// an error occurs
+												// or server returns
+												// response with an error
+												// status.
+											})
+									
+									//console.log('inside the submit testimonials method' + self.testimonial.company);
+									
+									};
 
 						} ]);
