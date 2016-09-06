@@ -3,6 +3,9 @@
 var AngularSpringApp = {};
 var app = angular.module("AngularSpringApp", [ "ngRoute" ]);
 
+
+
+
 app.config([ '$routeProvider', '$locationProvider',
 		function($routeProvider, $locationProvider) {
 			$routeProvider.when('/register/:imageName/:childrenId', {
@@ -17,12 +20,23 @@ app.config([ '$routeProvider', '$locationProvider',
 				controller : "AdminController",
 				controllerAs : "adminCtrl"
 			})
-			.when('/addTestimonials', {
+			.when('/createTestimonials', {
 				templateUrl : "/AKFoundation/views/addTestimonials.html",
 				controller : "AdminController",
 				controllerAs : "adminCtrl"
 			})
+			.when('/createPage', {
+				templateUrl : "/AKFoundation/views/addPages.html",
+				controller : "AdminController",
+				controllerAs : "adminCtrl"
+			})
+			.when('/createPageSection', {
+				templateUrl : "/AKFoundation/views/addPageSection.html",
+				controller : "AdminController",
+				controllerAs : "adminCtrl"
+			})
 		} ]);
+
 
 app.directive('googleplace', function() {
 	return {

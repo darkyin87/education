@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,8 +17,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ak.model.Children;
-import com.ak.service.AdminService;
+import com.ak.model.Pages;
+import com.ak.model.Testimonial;
 import com.ak.service.ChildrenService;
+import com.ak.service.PageService;
+import com.ak.service.TestimonialService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
@@ -26,10 +30,11 @@ public class AdminController {
 
 
 	@Autowired
-	private AdminService adminService;
-	@Autowired
 	private ChildrenService childrenService;
-	
+	@Autowired
+	private TestimonialService testimonialService;
+	@Autowired
+	private PageService pageService;
 	
 	 @RequestMapping(value = "/save", method = RequestMethod.POST)
 	 public ResponseEntity<String> saveChildren() {
@@ -72,5 +77,34 @@ public class AdminController {
 			return null;
 			
 		}
+	 
+	 @RequestMapping(value = "/createTestimonial", method = RequestMethod.POST)
+	    public ResponseEntity<String> createTestimonial(@RequestBody Testimonial testimonial) {
+		 
+		 testimonialService.save(testimonial);
+
+	        return new ResponseEntity<String>("sucess", HttpStatus.OK);
+
+		}
+	
+	 
+	 @RequestMapping(value = "/createPage", method = RequestMethod.POST)
+	    public ResponseEntity<String> createPage(@RequestBody Pages page) {
+		 
+		 pageService.createPage(page);
+
+	        return new ResponseEntity<String>("sucess", HttpStatus.OK);
+
+		}
+	 
+	 @RequestMapping(value = "/createPageSection", method = RequestMethod.POST)
+	    public ResponseEntity<String> createPageSection(@RequestBody Testimonial testimonial) {
+		 
+		 testimonialService.save(testimonial);
+
+	        return new ResponseEntity<String>("sucess", HttpStatus.OK);
+
+		}
+	
 
 }

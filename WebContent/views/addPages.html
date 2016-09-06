@@ -97,23 +97,21 @@
 			<div id="messages" class="alert alert-success"
 				data-ng-show="messages" data-ng-bind="messages"></div>
 			<div class="col-md-9 content">
-				<form ng-submit="adminCtrl.addTestimonials()" name="myForm" id="payment-form"
+				<form ng-submit="adminCtrl.createPage()" name="myForm" id="payment-form"
 					class="form-horizontal">
-					<span class="payment-errors"></span> <input type="hidden"
-						ng-model="children.id" />
+	
 					<div class="row">
 						<div class="form-group col-md-12">
-							<label class="col-md-2 control-lable" for="testimonial">Testimonial
+							<label class="col-md-2 control-lable" for="pageName">Page Name
 								</label>
 							<div class="col-md-7">
-								<textarea  rows="7" ng-model="adminCtrl.testimonial.testimonial" id="fname"
+								<input type="text" ng-model="adminCtrl.pages.pageName" id="pageName"
 									class="username form-control input-sm"
-									placeholder="Enter your Testimonial" required ng-minlength="3">
-									</textarea>
+									placeholder="Enter Page Name" required ng-minlength="3" />
 								<div class="has-error" ng-show="myForm.$dirty">
 									<span ng-show="myForm.fname.$error.required">This is a
 										required field</span> <span ng-show="myForm.fname.$error.minlength">Minimum
-										length required is 3</span> <span ng-show="myForm.fname.$invalid">This
+										length required is 3</span> <span ng-show="myForm.pageName.$invalid">This
 										field is invalid </span>
 								</div>
 							</div>
@@ -121,63 +119,22 @@
 					</div>
 					<div class="row">
 						<div class="form-group col-md-12">
-							<label class="col-md-2 control-lable" for="testimonialBy">Name
+							<label class="col-md-2 control-lable" for="pageDescription">Page Description
 								</label>
 							<div class="col-md-7">
-								<input type="text" ng-model="adminCtrl.testimonial.testimonialBy" id="lname"
+								<input type="text" ng-model="adminCtrl.pages.pageDescription" id="pageDescription"
 									class="username form-control input-sm"
 									placeholder="Enter your name" required ng-minlength="3" />
 								<div class="has-error" ng-show="myForm.$dirty">
 									<span ng-show="myForm.lname.$error.required">This is a
 										required field</span> <span ng-show="myForm.lname.$error.minlength">Minimum
-										length required is 3</span> <span ng-show="myForm.lname.$invalid">This
+										length required is 3</span> <span ng-show="myForm.pageDescription.$invalid">This
 										field is invalid </span>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="form-group col-md-12">
-							<label class="col-md-2 control-lable" for="company">Company</label>
-							<div class="col-md-7">
-								<input type="text" ng-model="adminCtrl.testimonial.company" id="email"
-									class="username form-control input-sm"
-									placeholder="Enter Your Company Name" required />
-								<div class="has-error" ng-show="myForm.$dirty">
-									<span ng-show="myForm.email.$error.required">This is a
-										required field</span> <span ng-show="myForm.email.$invalid">This
-										field is invalid </span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-
-					<div class="row">
-						<div class="form-group col-md-12">
-							<label class="col-md-2 control-lable" for="role">Role
-								</label>
-							<div class="col-md-7">
-								<input type="text" ng-model="adminCtrl.testimonial.role"
-									id="phonenbr" class="username form-control input-sm"
-									placeholder="Enter Your Role" required
-									ng-minlength="3" />
-								<div class="has-error" ng-show="myForm.$dirty">
-									<span ng-show="myForm.phonenbr.$error.required">This is
-										a required field</span> <span
-										ng-show="myForm.phonenbr.$error.minlength">Minimum
-										length required is 3</span> <span
-										ng-show="myForm.phonenbr.$error.minlength">Max length
-										required is 3</span> <span ng-show="myForm.phonenbr.$invalid">This
-										field is invalid </span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-
-
-					<div class="row">
+				<div class="row">
 						<div class="form-actions floatRight">
 							<input type="submit" value="Submit" id="submit"
 								class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid">

@@ -1,0 +1,76 @@
+
+<div>
+	<!-- Middle content section -->
+	<div class="middle">
+		<div class="container">
+			<div id="messages" class="alert alert-success"
+				data-ng-show="messages" data-ng-bind="messages"></div>
+			<div class="col-md-9 content">
+
+
+<div  ng-controller="AdminController as adminCtrl">
+
+<form ng-submit="adminCtrl.createPageSection()" name="myForm" id="payment-form"
+					class="form-horizontal">
+   <fieldset  data-ng-repeat="choice in choices">
+   
+   
+   
+   <div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="sectionTitle">Section Title
+								</label>
+							<div class="col-md-3">
+								<input type="text" ng-model="choice.sectionTitle" id="sectionTitle"
+									class="username form-control input-sm"
+									placeholder="Enter Section Title" required ng-minlength="3" />
+								<div class="has-error" ng-show="myForm.$dirty">
+									<span ng-show="myForm.lname.$error.required">This is a
+										required field</span> <span ng-show="myForm.lname.$error.minlength">Minimum
+										length required is 3</span> <span ng-show="myForm.lname.$invalid">This
+										field is invalid </span>
+								</div>
+							</div>
+								 <button class="remove" ng-show="$last" ng-click="removeChoice()">-</button>
+						
+							<label class="col-md-2 control-lable" for="sectionContent">Section Content
+								</label>
+							<div class="col-md-3">
+								<textarea rows="4" ng-model="choice.sectionContent" id="sectionContent"
+									class="username form-control input-sm"
+									placeholder="Enter Section Content" required ng-minlength="3" >
+								</textarea>
+								<div class="has-error" ng-show="myForm.$dirty">
+									<span ng-show="myForm.lname.$error.required">This is a
+										required field</span> <span ng-show="myForm.lname.$error.minlength">Minimum
+										length required is 3</span> <span ng-show="myForm.lname.$invalid">This
+										field is invalid </span>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+   
+   </fieldset>
+   <button class="addfields" ng-click="addNewChoice()">Add fields</button>
+   
+   <div class="row">
+						<div class="form-actions floatRight">
+							<input type="submit" value="Submit" id="submit"
+								class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid">
+
+
+						</div>
+					</div>
+       
+   <div id="choicesDisplay">
+       {{ choices }}
+        </div>
+        </form>
+        
+</div>
+
+</div>
+</div>
+</div>
+</div>

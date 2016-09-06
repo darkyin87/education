@@ -16,17 +16,8 @@ import com.ak.service.TestimonialService;
 public class TestimonialController {
 
 
-	@Autowired
-	private TestimonialService testimonialService;
 	
 	
-	 @RequestMapping(value = "/save", method = RequestMethod.POST)
-	    public ResponseEntity<String> save(@RequestBody Testimonial testimonial) {
-		 
-		 testimonialService.save(testimonial);
-
-	        return new ResponseEntity<String>("sucess", HttpStatus.OK);
-
-		}
+	
 	
 }
