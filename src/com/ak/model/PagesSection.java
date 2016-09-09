@@ -28,11 +28,11 @@ public class PagesSection implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long Id;
 	@Column(name="PAGE_ID")
-	private String PageId;
+	private String pageId;
 	@Column(name="SECTION_NAME")
-	private String SectionName;
+	private String sectionName;
 	@Column(name="SECTION_DETAIL")
-	private String SectionDetail;
+	private String sectionDetail;
 	
 	
 	

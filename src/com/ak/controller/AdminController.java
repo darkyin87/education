@@ -2,6 +2,7 @@ package com.ak.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,8 +19,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ak.model.Children;
 import com.ak.model.Pages;
+import com.ak.model.PagesSection;
 import com.ak.model.Testimonial;
 import com.ak.service.ChildrenService;
+import com.ak.service.PageSectionService;
 import com.ak.service.PageService;
 import com.ak.service.TestimonialService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -35,6 +38,8 @@ public class AdminController {
 	private TestimonialService testimonialService;
 	@Autowired
 	private PageService pageService;
+	@Autowired
+	private PageSectionService pagesSectionService;
 	
 	 @RequestMapping(value = "/save", method = RequestMethod.POST)
 	 public ResponseEntity<String> saveChildren() {
@@ -96,6 +101,30 @@ public class AdminController {
 	        return new ResponseEntity<String>("sucess", HttpStatus.OK);
 
 		}
+	 
+	 @RequestMapping(value = "/getPages", method = RequestMethod.GET)
+	 @ResponseBody
+	    public List<Pages> getPages() {
+		 
+		   List<Pages> pages = pageService.getPages();
+
+		   System.out.println(" the pages - " + pages);
+	        return pages;
+
+		}
+	 
+	 
+	 @RequestMapping(value = "/getPageSectionForPage", method = RequestMethod.GET)
+	 @ResponseBody
+	    public List<PagesSection> getPageSectionForPage(@RequestParam(value = "pageId") String pageId) {
+		 
+		   List<PagesSection> pagesSectionList = pagesSectionService.getPageSectionForPage(pageId);
+
+		   System.out.println(" the pages - " + pagesSectionList);
+	        return pagesSectionList;
+
+		}
+	 
 	 
 	 @RequestMapping(value = "/createPageSection", method = RequestMethod.POST)
 	    public ResponseEntity<String> createPageSection(@RequestBody Testimonial testimonial) {

@@ -1,5 +1,7 @@
 package com.ak.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -18,8 +20,16 @@ public class PageServiceImpl implements PageService{
 		
 		pagesRepository.save(page);
 
+		
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public List<Pages> getPages(){
+		System.out.println(" coming inside the get Pages ");
+		
+		return pagesRepository.findAll();
 	}
 
 }
