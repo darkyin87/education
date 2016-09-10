@@ -8,84 +8,84 @@
 			<div class="col-md-9 content">
 
 
-<div>
+				<div>
 
-<form ng-submit="adminCtrl.createPageSection()" name="myForm" id="payment-form"
-					class="form-horizontal">
-					
+					<form ng-submit="adminCtrl.createPageSection()" name="myForm"
+						id="payment-form" class="form-horizontal">
+
 						<!--  <select data-ng-options="o.pageName for o in pages" data-ng-model="selectedOption"></select> -->
-						
-						
-						
-						
-<select ng-change="adminCtrl.selectAction(selected)" ng-options="item as item.pageName for item in pages track by item.pageId" ng-model="selected"></select>
-    
-    
-    
-   <fieldset  data-ng-repeat="choice in choices">
-   {{choice.sectionTitle}}
-   
-   
-   <div class="row">
-						<div class="form-group col-md-12">
-						
-					
-						
-						
-						
-							<label class="col-md-2 control-lable" for="sectionTitle">Section Title
-								</label>
-							<div class="col-md-3">
-								<input type="text" ng-model="choice.sectionName" id="sectionTitle"
-									class="username form-control input-sm"
-									placeholder="Enter Section Title" required ng-minlength="3" />
-								<div class="has-error" ng-show="myForm.$dirty">
-									<span ng-show="myForm.lname.$error.required">This is a
-										required field</span> <span ng-show="myForm.lname.$error.minlength">Minimum
-										length required is 3</span> <span ng-show="myForm.lname.$invalid">This
-										field is invalid </span>
-								</div>
-							</div>
-								 <button class="remove" ng-show="$last" ng-click="removeChoice()">-</button>
-						
-							<label class="col-md-2 control-lable" for="sectionContent">Section Content
-								</label>
-							<div class="col-md-3">
-								<textarea rows="4" ng-model="choice.sectionDetail" id="sectionContent"
-									class="username form-control input-sm"
-									placeholder="Enter Section Content" required ng-minlength="3" >
+
+
+
+
+						<select
+							ng-change="adminCtrl.selectAction(adminCtrl.pageSection.pageId)"
+							ng-options="item as item.pageName for item in pages track by item.pageId"
+							ng-model="adminCtrl.pageSection.pageId"></select>
+
+
+
+						<fieldset data-ng-repeat="choice in pageSection">
+							<div class="row">
+								<div class="form-group col-md-12">
+
+
+
+
+
+									<label class="col-md-2 control-lable" for="sectionTitle">Section
+										Title </label>
+									<div class="col-md-3">
+										<input type="text" ng-model="choice.sectionName"
+											id="sectionTitle" class="username form-control input-sm"
+											placeholder="Enter Section Title" required ng-minlength="3" />
+										<div class="has-error" ng-show="myForm.$dirty">
+											<span ng-show="myForm.lname.$error.required">This is a
+												required field</span> <span ng-show="myForm.lname.$error.minlength">Minimum
+												length required is 3</span> <span ng-show="myForm.lname.$invalid">This
+												field is invalid </span>
+										</div>
+									</div>
+									<button class="remove" ng-show="$last"
+										ng-click="removeChoice()">-</button>
+
+									<label class="col-md-2 control-lable" for="sectionContent">Section
+										Content </label>
+									<div class="col-md-3">
+										<textarea rows="4" ng-model="choice.sectionDetail"
+											id="sectionContent" class="username form-control input-sm"
+											placeholder="Enter Section Content" required ng-minlength="3">
 								</textarea>
-								<div class="has-error" ng-show="myForm.$dirty">
-									<span ng-show="myForm.lname.$error.required">This is a
-										required field</span> <span ng-show="myForm.lname.$error.minlength">Minimum
-										length required is 3</span> <span ng-show="myForm.lname.$invalid">This
-										field is invalid </span>
+										<div class="has-error" ng-show="myForm.$dirty">
+											<span ng-show="myForm.lname.$error.required">This is a
+												required field</span> <span ng-show="myForm.lname.$error.minlength">Minimum
+												length required is 3</span> <span ng-show="myForm.lname.$invalid">This
+												field is invalid </span>
+										</div>
+
+									</div>
 								</div>
-								
+							</div>
+
+						</fieldset>
+						<button class="addfields" ng-click="addNewChoice()">Add
+							fields</button>
+
+						<div class="row">
+							<div class="form-actions floatRight">
+								<input type="submit" value="Submit" id="submit"
+									class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid">
+
+
 							</div>
 						</div>
-					</div>
-   
-   </fieldset>
-   <button class="addfields" ng-click="addNewChoice()">Add fields</button>
-   
-   <div class="row">
-						<div class="form-actions floatRight">
-							<input type="submit" value="Submit" id="submit"
-								class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid">
 
+						<div id="choicesDisplay">{{ pageSection }}</div>
+					</form>
 
-						</div>
-					</div>
-       
-   <div id="choicesDisplay">
-       {{ choices }}
-        </div>
-        </form>
-        
-</div>
+				</div>
 
-</div>
-</div>
-</div>
+			</div>
+		</div>
+	</div>
 </div>

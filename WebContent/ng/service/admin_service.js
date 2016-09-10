@@ -61,7 +61,19 @@ app.factory('AdminService', ['$http', '$q',function($http, $q){
               //that would help you to continue promise chain.
               return response.data;
             });
-            }	
+            }	,
+            
+            createPageSection: function(pageSection) {
+            	
+            	console.log('inside the create or update page section' + pageSection);
+            	  return	$http({
+            		  method: 'POST',
+            		  url: '/AKFoundation/admin/createPageSection',
+            		  data : pageSection,
+          			  dataType : 'json',
+          			  timeout : 100000
+            		})
+            }
             	
            
          

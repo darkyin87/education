@@ -16,6 +16,8 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -24,6 +26,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
 
 
 @ComponentScan("com.ak.controller,com.ak.service,com.ak.util")
@@ -139,7 +142,25 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 	}
 	
 	
-	
+	@Bean
+    public JavaMailSender getMailSender(){
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+         
+        //Using gmail
+        mailSender.setHost("smtp.gmail.com");
+        mailSender.setPort(587);
+        mailSender.setUsername("gokul.dharumar@gmail.com");
+        mailSender.setPassword("gowri!123#");
+         
+        Properties javaMailProperties = new Properties();
+        javaMailProperties.put("mail.smtp.starttls.enable", "true");
+        javaMailProperties.put("mail.smtp.auth", "true");
+        javaMailProperties.put("mail.transport.protocol", "smtp");
+        javaMailProperties.put("mail.debug", "true");//Prints out everything on screen
+         
+        mailSender.setJavaMailProperties(javaMailProperties);
+        return mailSender;
+    }
 	
 
 }

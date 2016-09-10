@@ -36,15 +36,17 @@ app
 									    });
 	
 							
-							$scope.choices = [];
+							$scope.pageSection;
 							$scope.addNewChoice = function() {
-							  var newItemNo = $scope.choices.length+1;
-							  $scope.choices.push({'id':'choice'+newItemNo});
+							  var newItemNo = $scope.pageSection.length+1;
+							  //$scope.pageSection.push({'id':'pageSection'+newItemNo});
+							  console.log(' the page id is --  ' + $scope.pageId);
+							  $scope.pageSection.push({'pageId':$scope.pageId});
 							};
 							  
 							$scope.removeChoice = function() {
-							  var lastItem = $scope.choices.length-1;
-							  $scope.choices.splice(lastItem);
+							  var lastItem = $scope.pageSection.length-1;
+							  $scope.pageSection.splice(lastItem);
 							};
 							
 							
@@ -107,13 +109,15 @@ app
 										
 										console.log('going inside the on chnage thing' + item.pageId);
 										
+										$scope.pageId = item.pageId;
+										
 										AdminService.getPageSectionForPage(item.pageId)
 										.then(
 												
 												function successCallback(response){
 													
 													console.log('success call back in getpagesection--  ' + response);
-													$scope.choices = response
+													$scope.pageSection = response
 													
 													
 												},
@@ -135,7 +139,6 @@ app
 										.then(
 												function successCallback(
 														response) {
-													self.clear();
 													$scope.messages = 'testimonial created Successfully'
 													// this callback will be
 													// called asynchronously
@@ -160,8 +163,27 @@ app
 									      
 										self.createPageSection = function() {
 											
-											console.log('inside the right create page section method '+ $scope.choices[1].sectionDetail);
-
+											console.log('inside the right create page section method '+ $scope.pageSection);
+											AdminService
+											.createPageSection($scope.pageSection)
+											.then(
+													function successCallback(
+															response) {
+														self.clear();
+														$scope.messages = 'testimonial created Successfully'
+														// this callback will be
+														// called asynchronously
+														// when the response is
+														// available
+													},
+													function errorCallback(response) {
+														alert('fail' + response);
+														// called asynchronously if
+														// an error occurs
+														// or server returns
+														// response with an error
+														// status.
+													})
 											
 											
 											};

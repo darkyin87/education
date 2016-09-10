@@ -31,7 +31,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RequestMapping("/admin")
 public class AdminController {
 
-
 	@Autowired
 	private ChildrenService childrenService;
 	@Autowired
@@ -40,100 +39,96 @@ public class AdminController {
 	private PageService pageService;
 	@Autowired
 	private PageSectionService pagesSectionService;
-	
-	 @RequestMapping(value = "/save", method = RequestMethod.POST)
-	 public ResponseEntity<String> saveChildren() {
-		 
-		 	
-	        return new ResponseEntity<String>("sucess", HttpStatus.OK);
-			
+
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public ResponseEntity<String> saveChildren() {
+
+		return new ResponseEntity<String>("sucess", HttpStatus.OK);
+
+	}
+
+	@RequestMapping(value = "/saveUserDataAndFile", method = RequestMethod.POST)
+	@ResponseBody
+	public Object saveUserDataAndFile(@RequestParam(value = "children") String childrenInfo,
+			@RequestParam(value = "file") MultipartFile file, HttpServletRequest request) {
+
+		System.out.println("Inside File upload" + childrenInfo);
+		ObjectMapper mapper = new ObjectMapper();
+
+		// String rootDirectory =
+		// request.getSession().getServletContext().getRealPath("/");
+		String rootDirectory = "/Users/gdharumar/Documents/Personal/LoadHere/";
+		System.out.println("Root Directory " + rootDirectory);
+		try {
+			Children children = mapper.readValue(childrenInfo, Children.class);
+			children.setPicture(file.getOriginalFilename());
+			childrenService.save(children);
+			System.out.println(" the user value is --  " + children.getFirstName());
+			file.transferTo(new File(rootDirectory + file.getOriginalFilename()));
+			System.out.print("is it done transfer???");
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-	 
-	 
-	 
-	 
-	 @RequestMapping(value = "/saveUserDataAndFile", method = RequestMethod.POST)
-		@ResponseBody
-		public Object saveUserDataAndFile(@RequestParam(value = "children") String childrenInfo,
-		        @RequestParam(value = "file") MultipartFile file,HttpServletRequest request) {
-			
-			System.out.println("Inside File upload" + childrenInfo);
-			ObjectMapper mapper = new ObjectMapper();
-			
-			
-			//String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-			String rootDirectory = "/Users/gdharumar/Documents/Personal/LoadHere/";
-			System.out.println("Root Directory "+rootDirectory);
-			try {
-				Children children = mapper.readValue(childrenInfo, Children.class);
-				children.setPicture(file.getOriginalFilename());
-				childrenService.save(children);
-				System.out.println(" the user value is --  " + children.getFirstName());
-				file.transferTo(new File(rootDirectory  + file.getOriginalFilename()));
-				System.out.print("is it done transfer???");
-			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			return null;
-			
-		}
-	 
-	 @RequestMapping(value = "/createTestimonial", method = RequestMethod.POST)
-	    public ResponseEntity<String> createTestimonial(@RequestBody Testimonial testimonial) {
-		 
-		 testimonialService.save(testimonial);
 
-	        return new ResponseEntity<String>("sucess", HttpStatus.OK);
+		return null;
 
-		}
-	
-	 
-	 @RequestMapping(value = "/createPage", method = RequestMethod.POST)
-	    public ResponseEntity<String> createPage(@RequestBody Pages page) {
-		 
-		 pageService.createPage(page);
+	}
 
-	        return new ResponseEntity<String>("sucess", HttpStatus.OK);
+	@RequestMapping(value = "/createTestimonial", method = RequestMethod.POST)
+	public ResponseEntity<String> createTestimonial(@RequestBody Testimonial testimonial) {
 
-		}
-	 
-	 @RequestMapping(value = "/getPages", method = RequestMethod.GET)
-	 @ResponseBody
-	    public List<Pages> getPages() {
-		 
-		   List<Pages> pages = pageService.getPages();
+		testimonialService.save(testimonial);
 
-		   System.out.println(" the pages - " + pages);
-	        return pages;
+		return new ResponseEntity<String>("sucess", HttpStatus.OK);
 
-		}
-	 
-	 
-	 @RequestMapping(value = "/getPageSectionForPage", method = RequestMethod.GET)
-	 @ResponseBody
-	    public List<PagesSection> getPageSectionForPage(@RequestParam(value = "pageId") String pageId) {
-		 
-		   List<PagesSection> pagesSectionList = pagesSectionService.getPageSectionForPage(pageId);
+	}
 
-		   System.out.println(" the pages - " + pagesSectionList);
-	        return pagesSectionList;
+	@RequestMapping(value = "/createPageSection", method = RequestMethod.POST)
+	public ResponseEntity<String> createPageSection(@RequestBody List<PagesSection> pageSection) {
 
-		}
-	 
-	 
-	 @RequestMapping(value = "/createPageSection", method = RequestMethod.POST)
-	    public ResponseEntity<String> createPageSection(@RequestBody Testimonial testimonial) {
-		 
-		 testimonialService.save(testimonial);
+		System.out.println(" pages section --  " + pageSection);
 
-	        return new ResponseEntity<String>("sucess", HttpStatus.OK);
+		// testimonialService.save(testimonial);
+		
+		pagesSectionService.saveOrUpdate(pageSection);
 
-		}
-	
+		return new ResponseEntity<String>("sucess", HttpStatus.OK);
+
+	}
+
+	@RequestMapping(value = "/createPage", method = RequestMethod.POST)
+	public ResponseEntity<String> createPage(@RequestBody Pages page) {
+
+		pageService.createPage(page);
+
+		return new ResponseEntity<String>("sucess", HttpStatus.OK);
+
+	}
+
+	@RequestMapping(value = "/getPages", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Pages> getPages() {
+
+		List<Pages> pages = pageService.getPages();
+
+		System.out.println(" the pages - " + pages);
+		return pages;
+
+	}
+
+	@RequestMapping(value = "/getPageSectionForPage", method = RequestMethod.GET)
+	@ResponseBody
+	public List<PagesSection> getPageSectionForPage(@RequestParam(value = "pageId") String pageId) {
+
+		List<PagesSection> pagesSectionList = pagesSectionService.getPageSectionForPage(pageId);
+
+		System.out.println(" the pages - " + pagesSectionList);
+		return pagesSectionList;
+
+	}
 
 }

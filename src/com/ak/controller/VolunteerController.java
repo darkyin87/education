@@ -16,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.ak.model.PaymentDetail;
 import com.ak.model.User;
+import com.ak.service.MailService;
 import com.ak.service.PaymentService;
 import com.ak.service.UserService;
 import com.ak.util.Utility;
@@ -31,6 +32,8 @@ public class VolunteerController {
     private PaymentService paymentService;
     @Autowired
     private Utility utility;
+    @Autowired
+    private MailService mailService;
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<String> createUser(@RequestBody User user) {
@@ -70,7 +73,14 @@ public class VolunteerController {
 
             System.out.println("going inside the else condition");
             paymentService.savePayment(paymentDetail);
+            
+           
        
+        }
+        if(returnUser != null){
+        System.out.println(" before send email");
+        mailService.sendEmail();
+        System.out.println("after sending email");
         }
         return new ResponseEntity<String>("sucess", HttpStatus.OK);
     }

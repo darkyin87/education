@@ -25,4 +25,15 @@ public class PageSectionServiceImpl implements PageSectionService{
 		return pagesSectionList;
 	}
 
+
+	@Override
+	public void saveOrUpdate(List<PagesSection> pagesSection) {
+		// TODO Auto-generated method stub
+		
+		pagesSectionRepository.save(pagesSection);
+		
+	}
+	
+	
+
 }
