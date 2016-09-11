@@ -40,7 +40,7 @@ public class MailServiceImpl implements MailService {
                 mimeMessage.setRecipient(Message.RecipientType.TO,
                         new InternetAddress("gokul.dharumar@gmail.com"));
                 mimeMessage.setText("Dear Gokul"
-                        + ", thank you for placing order. Your order id is " + ".");
+                        + ", Thanks for becoming a volunteer. Someone from the team will contact to you at the earliest");
                 mimeMessage.setSubject("Your order on Demoapp");
             }
         };
