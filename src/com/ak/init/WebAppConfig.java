@@ -151,7 +151,8 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
         mailSender.setPort(587);
         mailSender.setUsername("arulkavifoundation@gmail.com");
         mailSender.setPassword("@k123456");
-         
+         //password for paypal
+        //arulkavi1
         Properties javaMailProperties = new Properties();
         javaMailProperties.put("mail.smtp.starttls.enable", "true");
         javaMailProperties.put("mail.smtp.auth", "true");
