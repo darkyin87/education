@@ -6318,6 +6318,16 @@ ul.dropdown-lr {
   left: 0;
   min-width: 100%; }
 
+#testimonials.carousel {
+  height: 15em; }
+
+#testimonials.carousel .item {
+  height: 15em;
+  background: none; }
+
+#testimonials.carousel .carousel-caption {
+  left: auto; }
+
 /* Footer css */
 footer h3 {
   margin-bottom: 1em; }

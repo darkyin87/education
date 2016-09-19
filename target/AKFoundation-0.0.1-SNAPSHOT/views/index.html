@@ -186,6 +186,31 @@
       </section>
 
     </div>
+    
+    <div class="container">
+	<!-- Carousel================================================== -->
+	<div id="testimonials" class="carousel slide" data-interval="5000"
+		data-ride="carousel">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			<li data-target="#testimonials"
+				ng-repeat="(index, testimonial) in testimonials"
+				ng-class="{active : (index == 0)}" data-slide-to="{{index}}"></li>
+		</ol>
+		<div class="carousel-inner">
+			<div class="item" ng-class="{active : ({{index}} == 0)}"
+				ng-repeat="(index, testimonial) in testimonials">
+				<div class="container">
+					<div class="carousel-caption">
+						<p><q>{{testimonial["testimonial"]}}</q></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<img src="/AKFoundation/image/gallery/boy.jpg" width="100%" />
+</div>
+
 
     
     <!-- Footer -->

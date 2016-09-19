@@ -1,5 +1,7 @@
 package com.ak.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -12,12 +14,17 @@ import com.ak.repository.TestimonialRepository;
 public class TestimonialServiceImpl implements TestimonialService{
 	
 	@Resource
-	private TestimonialRepository testminialRepository;
+	private TestimonialRepository testmonialRepository;
 
 	@Override
 	public void save(Testimonial testimonial) {
-		testminialRepository.save(testimonial);
+	    testmonialRepository.save(testimonial);
 		
 	}
+
+    @Override
+    public List<Testimonial> getAll() {
+        return testmonialRepository.findAll();
+    }
 
 }

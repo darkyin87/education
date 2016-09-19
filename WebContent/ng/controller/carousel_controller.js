@@ -39,6 +39,23 @@ function($scope, CarouselService,$http,$location) {
     images(function(data){
         $scope.images = data;
     });
+    
+    
+    var testimonials=function(callback) {
+        console.log('going inside the testimonials');
+       $http.get('/AKFoundation/Testimonial/getAll')
+    .success(function(data) {
+        callback(data);
+        console.log('inside the testimonials call method' + data);
+    })
+    .error(function(data, status) {
+      console.error('Repos error', status, data);
+    });
+   };
+   
+   testimonials(function(data){
+       $scope.testimonials = data;
+   });
 
 
     $('#myCarousel').bind('slide.bs.carousel', function (e) {
