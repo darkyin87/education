@@ -29,6 +29,10 @@ public class SecurityUser extends User implements UserDetails
 		}		
 	}
 	
+	public SecurityUser() {
+		
+	}
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		

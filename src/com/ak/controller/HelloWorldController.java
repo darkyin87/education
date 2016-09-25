@@ -1,24 +1,33 @@
 package com.ak.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import java.security.Principal;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ak.model.User;
+import com.ak.service.UserService;
 
 
-@Controller
-@RequestMapping("/welcome")
+@RestController
+@RequestMapping("/login")
 public class HelloWorldController {
-
-	 @RequestMapping(method = RequestMethod.GET)
-	    public String sayHello(ModelMap model) {
-		 System.out.println(" is it coming here in the controller");
-	        model.addAttribute("greeting", "Hello World from Spring 4 MVC");
-	        return "/views/index.html";
+	
+	@Autowired
+	UserService userService;
+	
+	 @RequestMapping("/user")
+	    public User user(Principal user) {
+		 System.out.println(" going here inside the user principal");
+		 
+		 if(user != null)
+			 return userService.loadUserByUserName(user.getName());
+		 else
+			 return userService.loadUserByUserName("");
+	      //return user;
 	    }
 	 
-	 
 	
-	 
 	 
 }

@@ -6,14 +6,17 @@ var app = angular.module("AngularSpringApp", [ "ngRoute" ]);
 
 
 
-app.config([ '$routeProvider', '$locationProvider',
-		function($routeProvider, $locationProvider) {
+app.config([ '$routeProvider', '$locationProvider','$httpProvider',
+		function($routeProvider, $locationProvider,$httpProvider) {
 			$routeProvider.when('/register/:imageName/:childrenId', {
 				templateUrl : '/AKFoundation/views/registerVolunteer.html',
 				controller : 'UserController',
 				controllerAs : 'userCtrl'
 			}).when('/', {
 				templateUrl : "/AKFoundation/views/index.html",
+				controller : "CarouselController"
+			}).when('/login', {
+				//templateUrl : "/AKFoundation/views/addChildren.html",
 				controller : "CarouselController"
 			}).when('/addChildren', {
 				templateUrl : "/AKFoundation/views/addChildren.html",
@@ -35,6 +38,8 @@ app.config([ '$routeProvider', '$locationProvider',
 				controller : "AdminController",
 				controllerAs : "adminCtrl"
 			})
+			 $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+			
 		} ]);
 
 
@@ -99,3 +104,6 @@ app.directive('fileModel', [ '$parse', function($parse) {
 		}
 	};
 } ]);
+
+
+

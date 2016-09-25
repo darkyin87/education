@@ -64,17 +64,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	    http
 	    .csrf().disable()
 	    .authorizeRequests()
-	        .antMatchers("/login","/login/form**","/register","/logout", "/welcome/**", "/volunteer/**").permitAll()
-	        //.antMatchers("/admin","/admin/**").hasRole("ADMIN")
-	        .antMatchers("/**").permitAll()
-	        .anyRequest().authenticated()
+	        .antMatchers("/addChildren").authenticated()
 	        .and()
 	    .formLogin()
 	        .loginPage("/login/form")
 	        //.defaultSuccessUrl("/login")
 	        //.loginProcessingUrl("/login")
 	        .loginProcessingUrl("/login")
-	        .defaultSuccessUrl("/register")
+	        .defaultSuccessUrl("/")
 	        .failureUrl("/login/form?error")
 	        .permitAll();
 
