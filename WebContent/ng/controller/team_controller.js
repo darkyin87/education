@@ -14,7 +14,6 @@ team.controller('TeamController', ['$scope','TeamService',function($scope, TeamS
 							// this callback will be called asynchronously
 							// when the response is available
 						}, function errorCallback(response) {
-							alert('fail' + response);
 							// called asynchronously if an error occurs
 							// or server returns response with an error status.
 						})
