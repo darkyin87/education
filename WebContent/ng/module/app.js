@@ -15,6 +15,9 @@ app.config([ '$routeProvider', '$locationProvider','$httpProvider',
 			}).when('/', {
 				templateUrl : "/AKFoundation/views/index.html",
 				controller : "CarouselController"
+			}).when('/loginss', {
+				templateUrl : "/AKFoundation/views/index.html",
+				controller : "CarouselController"
 			}).when('/login', {
 				//templateUrl : "/AKFoundation/views/addChildren.html",
 				controller : "CarouselController"

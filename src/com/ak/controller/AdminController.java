@@ -49,7 +49,7 @@ public class AdminController {
 
 	@RequestMapping(value = "/saveUserDataAndFile", method = RequestMethod.POST)
 	@ResponseBody
-	public Object saveUserDataAndFile(@RequestParam(value = "children") String childrenInfo,
+	public ResponseEntity<String> saveUserDataAndFile(@RequestParam(value = "children") String childrenInfo,
 			@RequestParam(value = "file") MultipartFile file, HttpServletRequest request) {
 
 		System.out.println("Inside File upload" + childrenInfo);
@@ -74,8 +74,7 @@ public class AdminController {
 			e.printStackTrace();
 		}
 
-		return null;
-
+		return new ResponseEntity<String>("sucess", HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/createTestimonial", method = RequestMethod.POST)

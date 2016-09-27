@@ -14,4 +14,11 @@ public class IndexController {
     }
     
     
+    @RequestMapping("/loginss")
+    public String getIndexPag() {
+        return "/views/layout.html";
+    }
+    
+    
+    
 }

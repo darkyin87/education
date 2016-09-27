@@ -39,18 +39,6 @@ public class UserServiceImpl implements UserService{
 		User user =  userRepository.findByUserName(userName);
 		return user;
 }
-	@Override
-	public User getUnAssignedPlayers() {
-		
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
-	public User getAllPlayers() {
-		userRepository.findAll();	// TODO Auto-generated method stub
-		return null;
-	}
 	
 	
 	

@@ -8,7 +8,5 @@ public interface UserService {
 
 		public User createUser(User user);
 		public User loadUserByUserName(String userName);
-		public User getUnAssignedPlayers();
-		public User getAllPlayers();
 
 	}

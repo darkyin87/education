@@ -60,20 +60,25 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	  @Override
 	  protected void configure(HttpSecurity http) throws Exception {
-		  System.out.println(" is it coming here -- ");
+		  System.out.println(" is it coming here -- " );
 	    http
 	    .csrf().disable()
+	    
 	    .authorizeRequests()
-	        .antMatchers("/addChildren").authenticated()
+	    
+	     .antMatchers("/views/addChildren.html").hasAuthority("ADMIN")
+	   // .antMatchers("/views/addChildren.html").authenticated()
 	        .and()
 	    .formLogin()
 	        .loginPage("/login/form")
+	    //.loginPage("/")
 	        //.defaultSuccessUrl("/login")
 	        //.loginProcessingUrl("/login")
 	        .loginProcessingUrl("/login")
 	        .defaultSuccessUrl("/")
 	        .failureUrl("/login/form?error")
-	        .permitAll();
+	        .and()
+	        .exceptionHandling().accessDeniedPage("/");
 
 	  }
 }

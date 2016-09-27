@@ -70,11 +70,21 @@ app
 								'Content-Type' : undefined
 								}
 								}).success(function() {
+									self.clear();
+									$scope.messages = 'Children created Successfully'
 								console.log('success');
 								}).error(function() {
 								console.log('error');
 								});
 								};
+								
+								self.clear = function() {
+									console.log('clearning the form');
+									$scope.myForm.$setPristine();
+								}
+								
+								
+								
 								
 								
 								self.addTestimonials = function() {
@@ -139,7 +149,7 @@ app
 										.then(
 												function successCallback(
 														response) {
-													$scope.messages = 'testimonial created Successfully'
+													$scope.messages = 'Page created Successfully'
 													// this callback will be
 													// called asynchronously
 													// when the response is

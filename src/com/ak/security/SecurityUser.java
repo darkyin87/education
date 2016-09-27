@@ -25,7 +25,7 @@ public class SecurityUser extends User implements UserDetails
 			this.setPassword(user.getPassword());
 			this.setUserID(user.getUserID());
 			this.setFirstName(user.getFirstName());
-			
+			//this.getAuthorities();
 		}		
 	}
 	
@@ -42,7 +42,8 @@ public class SecurityUser extends User implements UserDetails
 		if(userRoles != null)
 		{
 			for (UserRoles role : userRoles) {
-				SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.getRoleName());
+				SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.getRole());
+				System.out.println(" goinginsid ethe authorities");;
 				authorities.add(authority);
 			}
 		}

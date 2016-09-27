@@ -128,6 +128,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/image/**").addResourceLocations("/image/");
 		registry.addResourceHandler("/bower_components/**").addResourceLocations("/bower_components/");
 		registry.addResourceHandler("/node/**").addResourceLocations("/node_modules/stripe-as-promised/");
+		System.out.println(" inside the resource handler for views");
         registry.addResourceHandler("/views/**").addResourceLocations("/views/");
 	}
 

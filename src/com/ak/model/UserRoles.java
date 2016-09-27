@@ -13,8 +13,8 @@ public class UserRoles {
 	@Id
 	@Column(name="ID")
 	private long roleID;
-	@Column(name="role_name")
-	private String roleName;
+	@Column(name="role")
+	private String role;
 	@Column(name="role_desc")
 	private String roleDescription;
 	@Column(name="user_id")
@@ -25,11 +25,12 @@ public class UserRoles {
 	public void setRoleID(long roleID) {
 		this.roleID = roleID;
 	}
-	public String getRoleName() {
-		return roleName;
+	
+	public String getRole() {
+		return role;
 	}
-	public void setRoleName(String roleName) {
-		this.roleName = roleName;
+	public void setRole(String role) {
+		this.role = role;
 	}
 	public String getRoleDescription() {
 		return roleDescription;
