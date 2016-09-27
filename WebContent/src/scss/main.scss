@@ -153,3 +153,58 @@ footer .footer-below {
 .btn-fill {
     width: 100%;
 }
+
+#change {
+    background-image: url("../img/group_of_boys.jpeg");
+    text-align: center;
+}
+
+.right-green-border {
+    border-right: 2px solid $gray-light;
+}
+
+.btn-default.btn-circle{
+  -webkit-box-shadow: 0px 0px 3px 1px #ccc;
+  -moz-box-shadow:    0px 0px 3px 1px #ccc;
+  box-shadow:         0px 0px 3px 1px #ccc;
+}
+
+.mentor-icon,
+.mentor-icon:hover,
+.mentor-icon:active {
+    background: url("../img/mentor_icon.png");
+    width: 130px;
+    height: 130px;
+    background-color: #536c1b;
+    border-radius: 50%;
+}
+
+.graduation-icon,
+.graduation-icon:hover,
+.graduation-icon:active {
+    background: url("../img/graduation_cap.png");
+    width: 130px;
+    height: 130px;
+    background-color: #536c1b;
+    border-radius: 50%;
+}
+
+.paper-pen-icon,
+.paper-pen-icon-icon:hover,
+.paper-pen-icon-icon:active {
+    background: url("../img/paper_pen_icon.png");
+    width: 130px;
+    height: 130px;
+    background-color: #536c1b;
+    border-radius: 50%;
+}
+
+.cog-icon,
+.cog-icon:hover,
+.cog-icon:active {
+    background: url("../img/cog_icon.png");
+    width: 130px;
+    height: 130px;
+    background-color: #536c1b;
+    border-radius: 50%;
+}
