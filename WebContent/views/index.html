@@ -1,93 +1,112 @@
 
     <!-- Top static navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="./index.html">##LOGO##</a>
-        </div>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+				aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="./index.html">##LOGO##</a>
+		</div>
 
 
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li>
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
-                Who we are<span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li><a href="#journey">Journey</a></li>
-                <li><a href="#people">People</a></li>
-              </ul>
-            </li>
+		<div id="navbar" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+					role="button" aria-haspopup="true" aria-expanded="true"> Who we
+						are<span class="caret"></span>
+				</a>
+					<ul class="dropdown-menu">
+						<li><a href="#journey">Journey</a></li>
+						<li><a href="#people">People</a></li>
+					</ul></li>
 
 
-            <li>
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">What we do<span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                <li><a href="#vision">Vision and Objective</a></li>
-                <li><a href="#recruitment">Recruitment process for students and mentors</a></li>
-                <li><a href="#guidelines">Guidelines</a></li>
-              </ul>
-            </li>
-            <li><a href="#takeAction">Take Action</a></li>
-            <!-- <li><a href="#donate">Donate</a></li> -->
-          </ul>
+				<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+					role="button" aria-haspopup="true" aria-expanded="true">What we
+						do<span class="caret"></span>
+				</a>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+						<li><a href="#vision">Vision and Objective</a></li>
+						<li><a href="#recruitment">Recruitment process for
+								students and mentors</a></li>
+						<li><a href="#guidelines">Guidelines</a></li>
+					</ul></li>
+				<li><a href="#takeAction">Take Action</a></li>
+				<!-- <li><a href="#donate">Donate</a></li> -->
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li ng-show="authenticated">Welcome {{userName}}</li>
 
-          <!-- <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-              <a href="/login" class="dropdown-toggle" data-toggle="dropdown">Login/Signup<span class="caret"></span></a>
-              <ul class="dropdown-menu dropdown-lr" role="menu">
-                <div class="col-lg-12">
-                    <div class="text-center"><h3><b>Log In</b></h3></div>
-                      <form id="ajax-login-form" action="/login" method="post" role="form" autocomplete="off">
-                        <div class="form-group">
-                          <label for="username">Username</label>
-                          <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" autocomplete="off">
-                        </div>
+				<li ng-show="authenticated"><a href="" ng-click="logout()">logout</a></li>
+				<li ng-show="!authenticated" class="dropdown"><a href="/login"
+					class="dropdown-toggle" data-toggle="dropdown">Login/Signup<span
+						class="caret"></span></a>
+					<ul class="dropdown-menu dropdown-lr" role="menu">
+						<div class="col-lg-12">
+							<div class="text-center">
+								<h3>
+									<b>Log In</b>
+								</h3>
+							</div>
+							<form id="ajax-login-form" ng-submit="login()" method="post"
+								role="form" autocomplete="off">
+								<div class="alert alert-danger" ng-show="error">There was
+									a problem logging in. Please try again.</div>
+								<div class="form-group">
+									<label for="username">Username</label> <input type="text"
+										name="username" id="username" tabindex="1"
+										class="form-control" placeholder="Username" value=""
+										autocomplete="off" ng-model="credentials.username">
+								</div>
 
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" autocomplete="off">
-                        </div>
+								<div class="form-group">
+									<label for="password">Password</label> <input type="password"
+										name="password" id="password" tabindex="2"
+										class="form-control" placeholder="Password" autocomplete="off"
+										ng-model="credentials.password">
+								</div>
 
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-xs-7">
-                                    <input type="checkbox" tabindex="3" name="remember" id="remember">
-                                    <label for="remember"> Remember Me</label>
-                                </div>
-                                <div class="col-xs-5 pull-right">
-                                    <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-success" value="Log In">
-                                </div>
-                            </div>
-                        </div>
+								<div class="form-group">
+									<div class="row">
+										<div class="col-xs-7">
+											<input type="checkbox" tabindex="3" name="remember"
+												id="remember"> <label for="remember">
+												Remember Me</label>
+										</div>
+										<div class="col-xs-5 pull-right">
+											<button type="submit" class="btn btn-primary">Submit</button>
+										</div>
+									</div>
+								</div>
 
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="text-center">
-                                        <a href="/forgot" tabindex="5" class="forgot-password">Forgot Password?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a href="/register" tabindex="6" class="register">Register</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <input type="hidden" class="hide" name="token" id="token" value="a465a2791ae0bae853cf4bf485dbe1b6">
-                      </form>
-                    </div>
-                </ul>
-            </li>
-          </ul> -->
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+								<div class="form-group">
+									<div class="row">
+										<div class="col-lg-12">
+											<div class="text-center">
+												<a href="/forgot" tabindex="5" class="forgot-password">Forgot
+													Password?</a>
+											</div>
+											<div class="text-center">
+												<a href="/register" tabindex="6" class="register">Register</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<input type="hidden" class="hide" name="token" id="token"
+									value="a465a2791ae0bae853cf4bf485dbe1b6">
+							</form>
+						</div>
+					</ul></li>
+			</ul>
+		</div>
+		<!--/.nav-collapse -->
+	</div>
+</nav>
 
     <div>
     <div>
@@ -125,65 +144,71 @@
 </div>
 
     <div class="content">
-      <section id="story">
-          <div class="container">
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="col-lg-4 nopadding">
-                    <span class="col-lg-6 nopadding"><img src="views/img/donate.png" class="img-responsive" /></span>
-                    <span class="col-lg-6 nopadding"><h4>Donate</h4>By endowing charitable money, we will be able to assist more children attain a better future they deserve.</span>
-                  </div>
-                  <div class="col-lg-4 nopadding">
-                    <span class="col-lg-6 nopadding"><img src="views/img/mentor.png" class="img-responsive" /></span>
-                    <span class="col-lg-6 nopadding"><h4>Mentor</h4>Join a community of committed individuals who share their professional and life skills to guide the children find their way.</p></span>
-                  </div>
-                  <div class="col-lg-4 nopadding">
-                    <span class="col-lg-6 nopadding"><img src="views/img/volunteer.png" class="img-responsive" /></span>
-                    <span class="col-lg-6 nopadding"><h4>Volunteer</h4>Volunteer to help spread the word. Your time and the skills you can offer will help us take this to the next level. Join us to lead.</span>
-                  </div>
-                </div>
-                <div class="col-lg-12">
-                    <h3><div id="people" class="sectionTitle" data-toggle="modal">PEOPLE</div></h3>
-                    <div class="caption">
-                        <div class="caption-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                        </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-      </section>
+      <!--<section id="story">-->
+          <!--<div class="container">-->
+              <!--<div class="row">-->
+                <!--<div class="col-lg-12">-->
+                  <!--<div class="col-lg-4 nopadding">-->
+                    <!--<span class="col-lg-6 nopadding"><img src="views/img/donate.png" class="img-responsive" /></span>-->
+                    <!--<span class="col-lg-6 nopadding"><h4>Donate</h4>By endowing charitable money, we will be able to assist more children attain a better future they deserve.</span>-->
+                  <!--</div>-->
+                  <!--<div class="col-lg-4 nopadding">-->
+                    <!--<span class="col-lg-6 nopadding"><img src="views/img/mentor.png" class="img-responsive" /></span>-->
+                    <!--<span class="col-lg-6 nopadding"><h4>Mentor</h4>Join a community of committed individuals who share their professional and life skills to guide the children find their way.</p></span>-->
+                  <!--</div>-->
+                  <!--<div class="col-lg-4 nopadding">-->
+                    <!--<span class="col-lg-6 nopadding"><img src="views/img/volunteer.png" class="img-responsive" /></span>-->
+                    <!--<span class="col-lg-6 nopadding"><h4>Volunteer</h4>Volunteer to help spread the word. Your time and the skills you can offer will help us take this to the next level. Join us to lead.</span>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="col-lg-12">-->
+                    <!--<h3><div id="people" class="sectionTitle" data-toggle="modal">PEOPLE</div></h3>-->
+                    <!--<div class="caption">-->
+                        <!--<div class="caption-content">-->
+                            <!--Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+      <!--</section>-->
 
-      <section id="work">
-          <div class="container">
-              <div class="row">
-                  <div class="col-lg-12">
-                      <h3><div id="vision" class="sectionTitle" data-toggle="modal">VISION</div></h3>
-                      <div class="caption">
-                          <div class="caption-content">
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-lg-12">
-                      <h3><div id="recruitment" class="sectionTitle" data-toggle="modal">RECRUITMENT</div></h3>
-                      <div class="caption">
-                          <div class="caption-content">
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-lg-12">
-                      <h3><div id="guidelines" class="sectionTitle" data-toggle="modal">GUIDELINES</div></h3>
-                      <div class="caption">
-                          <div class="caption-content">
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </section>
+        <section id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="col-lg-4 nopadding">
+                    <div><h3>Who we are</h3></div>
+                    <div>&nbsp;</div>
+                    <div><img src="views/img/group_of_people.jpg" class="img-responsive" /></div>
+                    <div>&nbsp;</div>
+                    <div>AK Foundation, founded by Arul and Kavitha, successful entrepreneurs and philanthropists, believe education will change lives for better.</div>
+                    <div>&nbsp;</div>
+                    <div><a class="btn btn-lg btn-white btn-fill" href="#" role="button">READ MORE</a></div>
+                </div>
+                <div class="col-lg-4 nopadding">
+                    <div><h3>What we do</h3></div>
+                    <div>&nbsp;</div>
+                    <div><img src="views/img/certificate.png" class="img-responsive" /></div>
+                    <div>&nbsp;</div>
+                    <div>We identify meritorious students with financial adversities, provide them scholarship and guidance to complete higher secondary and college.</div>
+                    <div>&nbsp;</div>
+                    <div><a class="btn btn-lg btn-white btn-fill" href="#" role="button">APPLY FOR SCHOLARSHIP</a></div>
+                </div>
+                <div class="col-lg-4 nopadding">
+                    <div><h3>Get involved</h3></div>
+                    <div>&nbsp;</div>
+                    <div><img src="views/img/hand_heart.png" class="img-responsive" /></div>
+                    <div>&nbsp;</div>
+                    <div>Volunteer to mentor, monitor progress, donate. Without you, we won’t be able to get far.</div>
+                    <div>&nbsp;</div>
+                    <div>&nbsp;</div>
+                    <div><a class="btn btn-lg btn-white btn-fill" href="#" role="button">TAKE ACTION</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
     </div>
     

@@ -127,7 +127,6 @@ app
 								}).success(function(data) {
 
 									console.log(data);
-									alert(data.firstName);
 									if (data.firstName) {
 										$rootScope.authenticated = true;
 										$rootScope.userName = data.firstName
@@ -145,7 +144,6 @@ app
 							$scope.credentials = {};
 
 							$scope.login = function() {
-								alert(' is it working???');
 								$http
 										.post(
 												'login',
@@ -161,12 +159,10 @@ app
 															$scope.credentials,
 															function() {
 																if ($rootScope.authenticated) {
-																	alert('inside the authenticated');
 																	$location
 																			.path("/addChildren");
 																	$scope.error = false;
 																} else {
-																	alert('inside the else of authenticated');
 																	$location
 																			.path("/login");
 																	$scope.error = true;
