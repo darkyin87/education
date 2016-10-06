@@ -25,7 +25,7 @@ public class SecurityUser extends User implements UserDetails
 			this.setPassword(user.getPassword());
 			this.setUserID(user.getUserID());
 			this.setFirstName(user.getFirstName());
-			//this.getAuthorities();
+			
 		}		
 	}
 	
@@ -38,7 +38,7 @@ public class SecurityUser extends User implements UserDetails
 		
 		Collection<GrantedAuthority> authorities = new ArrayList<>();
 		Set<UserRoles> userRoles = this.getRoles();
-		
+		System.out.println(" inside the granted authority");;
 		if(userRoles != null)
 		{
 			for (UserRoles role : userRoles) {
@@ -89,5 +89,7 @@ public class SecurityUser extends User implements UserDetails
 	@Override
 	public boolean isEnabled() {
 		return true;
-	}	
+	}
+
+	
 }

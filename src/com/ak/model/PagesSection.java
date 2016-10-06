@@ -14,7 +14,7 @@ import lombok.ToString;
 
 
 @Entity
-@Table(name = "pages_section")
+@Table(name = "PAGES_SECTION")
 @Data
 @ToString
 public class PagesSection implements Serializable{

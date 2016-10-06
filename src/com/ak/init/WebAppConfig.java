@@ -22,6 +22,7 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -36,6 +37,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @EnableJpaRepositories("com.ak.repository")
 
 public class WebAppConfig extends WebMvcConfigurerAdapter {
+	
+	   
 
 	private static final String PROPERTY_NAME_DATABASE_DRIVER = "db.driver";
 	private static final String PROPERTY_NAME_DATABASE_PASSWORD = "db.password";
@@ -48,6 +51,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 
 	@Resource
 	private Environment env;
+
 
 	@Bean
 	public DataSource dataSource() {
@@ -65,6 +69,14 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 	    public StandardServletMultipartResolver resolver() {
 	        return new StandardServletMultipartResolver();
 	    }
+	 
+	 
+	 @Override
+	    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+	        configurer.enable();
+	    }
+	 
+	 
 
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
@@ -142,7 +154,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 		converters.add(new StringHttpMessageConverter());
 	}
 	
-	
+
 	@Bean
     public JavaMailSender getMailSender(){
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
@@ -154,6 +166,9 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
         mailSender.setPassword("@k123456");
          //password for paypal
         //arulkavi1
+        //role for aws
+        //AKFoundationRole
+        //aws db user - root pwd - akfoundation
         Properties javaMailProperties = new Properties();
         javaMailProperties.put("mail.smtp.starttls.enable", "true");
         javaMailProperties.put("mail.smtp.auth", "true");

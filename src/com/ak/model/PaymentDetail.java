@@ -20,7 +20,7 @@ import lombok.ToString;
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 @Entity
-@Table(name = "paymentdetail")
+@Table(name = "PAYMENTDETAIL")
 @Data
 @ToString
 public class PaymentDetail implements Serializable{

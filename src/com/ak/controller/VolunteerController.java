@@ -84,6 +84,15 @@ public class VolunteerController {
         }
         return new ResponseEntity<String>("sucess", HttpStatus.OK);
     }
+    
+    
+    @RequestMapping(value = "/fetchPassword", method = RequestMethod.POST)
+    public ResponseEntity<String> fetchPassword(String emailId) {
+    	System.out.println(" inside the fetch password --  " + emailId);
+        return new ResponseEntity<String>("sucess", HttpStatus.OK);
+
+    	
+    }
 	
 	
 	/*@RequestMapping(value = "/create", method = RequestMethod.POST)

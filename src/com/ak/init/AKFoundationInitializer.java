@@ -52,7 +52,7 @@ public class AKFoundationInitializer extends AbstractAnnotationConfigDispatcherS
         return multipartConfigElement;
     }
  
-    private static final String LOCATION = "/Users/gdharumar/Documents/Personal/"; // Temporary location where files will be stored
+	private static final String LOCATION = "/var/tmp/"; // Temporary location where files will be stored
  
     private static final long MAX_FILE_SIZE = 5242880; // 5MB : Max file size.
                                                         // Beyond that size spring will throw exception.

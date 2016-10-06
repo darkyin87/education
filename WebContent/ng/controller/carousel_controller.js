@@ -78,11 +78,12 @@ function($rootScope,$scope, CarouselService,$http,$location) {
     var authenticate = function(callback) {
         $http.get('/AKFoundation/login/user').success(function(data) {
         	console.log(data);
-        	alert(data.firstName);
+        	//alert(data.firstName);
           if (data.firstName) {
             $rootScope.authenticated = true;
             $rootScope.userName= data.firstName
-            
+            $rootScope.roleName = data.roles[0].role;
+            console.log(' the role Name --  ' + $rootScope.roleName);
           } else {
             $rootScope.authenticated = false;
           }
@@ -96,7 +97,6 @@ function($rootScope,$scope, CarouselService,$http,$location) {
       $scope.credentials = {};
     
     $scope.login = function() {
-    	alert(' is it working???');
         $http.post('login', $.param($scope.credentials), {
           headers : {
             "content-type" : "application/x-www-form-urlencoded"
@@ -104,11 +104,9 @@ function($rootScope,$scope, CarouselService,$http,$location) {
         }).success(function(data) {
           authenticate(function() {
             if ($rootScope.authenticated) {
-            	alert('inside the authenticated');
               $location.path("/addChildren");
               $scope.error = false;
             } else {
-            	alert('inside the else of authenticated');
               $location.path("/login");
               $scope.error = true;
             }

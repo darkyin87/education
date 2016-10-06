@@ -26,11 +26,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private CustomUserDetailsService customUserDetailsService;
 	
-	@Override
-    protected void configure(AuthenticationManagerBuilder registry) throws Exception {
+	@Autowired
+    public void configureGlobalSecurity(AuthenticationManagerBuilder registry) throws Exception {
 		registry.authenticationProvider(authenticationProvider());
+		//registry.userDetailsService(customUserDetailsService);
+		
+		System.out.println(" inside the configure global security");
+		//registry.inMemoryAuthentication().withUser("gokul.dharumar@gmail.com").password("test123").roles("ADMIN");
 		registry.userDetailsService(customUserDetailsService);
     }
+	
+	
 
 	  @Override
 	  public void configure(WebSecurity web) throws Exception {
@@ -67,6 +73,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	    .authorizeRequests()
 	    
 	     .antMatchers("/views/addChildren.html").hasAuthority("ADMIN")
+	     //.antMatchers("/addChildren").access("hasRole('ADMIN')")
 	   // .antMatchers("/views/addChildren.html").authenticated()
 	        .and()
 	    .formLogin()

@@ -20,7 +20,20 @@ app.factory('UserService', ['$http', '$q',function($http, $q){
             },
              
             
-            
+            fetchPassword: function(emailId){
+            	console.log('inside the servic e--  ' + emailId);
+            	return	$http({
+      		  method: 'POST',
+    		  url: '/AKFoundation/volunteer/fetchPassword',
+    		  data : emailId,
+  			  dataType : 'json',
+  			  timeout : 100000
+    		})
+    	
+           
+    },
+
+
             updateUser: function(user, id){
                     return $http.put('http://localhost:8080/Spring4MVCAngularJSExample/user/'+id, user)
                             .then(

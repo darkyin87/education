@@ -17,11 +17,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.springframework.security.config.annotation.authentication.configurers.userdetails.UserDetailsAwareConfigurer;
+import org.springframework.security.core.GrantedAuthority;
+
 import lombok.Data;
 
 
 @Entity
-@Table(name = "users")
+@Table(name = "USERS")
 @Data public class User implements Serializable{
 	
 	/**
@@ -65,6 +68,7 @@ import lombok.Data;
 	@Transient
 	private String chosenPlace;
 	
+
 	
 	
 

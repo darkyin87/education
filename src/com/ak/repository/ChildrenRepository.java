@@ -12,7 +12,7 @@ public interface ChildrenRepository extends JpaRepository<Children, Long> {
 	
 	public List<Children> findAll();
 	
-	 @Query(value = "select  c.childrenId,c.picture ,sum(p.DonationAmt) as donationAmount from children c" +
+	 @Query(value = "select  c.childrenId,c.picture ,sum(p.DonationAmt) as donationAmount from CHILDREN c" +
 	" inner join PAYMENTDETAIL p on c.childrenId = p.childrenId group by p.childrenId",nativeQuery=true)
 	public List<Object[]> findWithDonation();
 	 

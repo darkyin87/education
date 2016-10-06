@@ -39,6 +39,14 @@ public class UserServiceImpl implements UserService{
 		User user =  userRepository.findByUserName(userName);
 		return user;
 }
+	@Override
+	public String fetchPassword(String userId) {
+		// TODO Auto-generated method stub
+		
+		return null;
+	}
+	
+	
 	
 	
 	

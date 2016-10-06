@@ -25,6 +25,11 @@ import com.ak.service.ChildrenService;
 import com.ak.service.PageSectionService;
 import com.ak.service.PageService;
 import com.ak.service.TestimonialService;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.transfer.TransferManager;
+import com.amazonaws.services.s3.transfer.Upload;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
@@ -39,6 +44,8 @@ public class AdminController {
 	private PageService pageService;
 	@Autowired
 	private PageSectionService pagesSectionService;
+	
+	
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ResponseEntity<String> saveChildren() {
@@ -57,7 +64,9 @@ public class AdminController {
 
 		// String rootDirectory =
 		// request.getSession().getServletContext().getRealPath("/");
-		String rootDirectory = "/Users/gdharumar/Documents/Personal/LoadHere/";
+		//String rootDirectory = "/Users/gdharumar/Documents/Personal/LoadHere/";
+		String rootDirectory = "/home/images/";
+
 		System.out.println("Root Directory " + rootDirectory);
 		try {
 			Children children = mapper.readValue(childrenInfo, Children.class);
@@ -66,6 +75,17 @@ public class AdminController {
 			System.out.println(" the user value is --  " + children.getFirstName());
 			file.transferTo(new File(rootDirectory + file.getOriginalFilename()));
 			System.out.print("is it done transfer???");
+			
+			File ff = new File(rootDirectory+ file.getOriginalFilename());
+			
+			
+			BasicAWSCredentials credentials = new BasicAWSCredentials("AKIAIZRXW6753GRAFNWA","sAYnD10ZNsKJ1yki79ycYvPDTrQhn2Af7gxx4pah");
+			
+			
+			TransferManager manager = new TransferManager(credentials);
+			Upload upload = manager.upload("elasticbeanstalk-us-west-2-713889091780","images/"+file.getOriginalFilename(),ff);
+			
+			
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

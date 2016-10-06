@@ -23,7 +23,7 @@ import lombok.Data;
 
 
 @Entity
-@Table(name = "children")
+@Table(name = "CHILDREN")
 @Data public class Children implements Serializable{
 	
 	/**
