@@ -1,8 +1,8 @@
 'use strict';
 
-app.controller('CarouselController', ['$scope', 'CarouselService','$http','$location',
+app.controller('CarouselController', ['$rootScope','$scope', 'CarouselService','$http','$location',
 
-function($scope, CarouselService,$http,$location) {
+function($rootScope,$scope, CarouselService,$http,$location) {
     $scope.firstName = 'Gokul'
 
     $scope.data = {
@@ -73,5 +73,59 @@ function($scope, CarouselService,$http,$location) {
         progressDangerEl.attr('aria-valuenow', (100 - completedPercent));
         progressDangerEl.css('width', (100 - completedPercent)+'%');
     });
+    
+    $('.carousel-control.left').click(function() {
+	  $('#myCarousel').carousel('prev');
+	  return false;
+	});
+
+	$('.carousel-control.right').click(function() {
+	  $('#myCarousel').carousel('next');
+	  return false;
+	});
+    
+    
+    var authenticate = function(callback) {
+        $http.get('/AKFoundation/login/user').success(function(data) {
+        	console.log(data);
+        	//alert(data.firstName);
+          if (data.firstName) {
+            $rootScope.authenticated = true;
+            $rootScope.userName= data.firstName
+            $rootScope.roleName = data.roles[0].role;
+            console.log(' the role Name --  ' + $rootScope.roleName);
+          } else {
+            $rootScope.authenticated = false;
+          }
+          callback && callback();
+        }).error(function() {
+          $rootScope.authenticated = false;
+          callback && callback();
+        });
+      }
+      authenticate();
+      $scope.credentials = {};
+    
+    $scope.login = function() {
+        $http.post('login', $.param($scope.credentials), {
+          headers : {
+            "content-type" : "application/x-www-form-urlencoded"
+          }
+        }).success(function(data) {
+          authenticate(function() {
+            if ($rootScope.authenticated) {
+              $location.path("/addChildren");
+              $scope.error = false;
+            } else {
+              $location.path("/login");
+              $scope.error = true;
+            }
+          });
+        }).error(function(data) {
+          $location.path("/");
+          $scope.error = true;
+          $rootScope.authenticated = false;
+        })
+      };
 
 }]);

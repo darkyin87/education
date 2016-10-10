@@ -37,10 +37,14 @@
 						<li><a href="#guidelines">Guidelines</a></li>
 					</ul></li>
 				<li><a href="#takeAction">Take Action</a></li>
+				
+				<li ng-show="roleName=='ADMIN'"><a href="#admin">Adminstrator</a></li>
+				
+				<li ng-show="roleName=='USER'"><a href="#admin">UserMenu</a></li>
 				<!-- <li><a href="#donate">Donate</a></li> -->
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li ng-show="authenticated">Welcome {{userName}}</li>
+				<li ng-show="authenticated">Welcome {{roleName}}</li>
 
 				<li ng-show="authenticated"><a href="" ng-click="logout()">logout</a></li>
 				<li ng-show="!authenticated" class="dropdown"><a href="/login"
@@ -88,7 +92,7 @@
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="text-center">
-												<a href="/forgot" tabindex="5" class="forgot-password">Forgot
+												<a href="/AKFoundation/#/forgotPassword" tabindex="5" class="forgot-password">Forgot
 													Password?</a>
 											</div>
 											<div class="text-center">

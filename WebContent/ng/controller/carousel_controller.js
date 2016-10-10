@@ -74,6 +74,16 @@ function($rootScope,$scope, CarouselService,$http,$location) {
         progressDangerEl.css('width', (100 - completedPercent)+'%');
     });
     
+    $('.carousel-control.left').click(function() {
+	  $('#myCarousel').carousel('prev');
+	  return false;
+	});
+
+	$('.carousel-control.right').click(function() {
+	  $('#myCarousel').carousel('next');
+	  return false;
+	});
+    
     
     var authenticate = function(callback) {
         $http.get('/AKFoundation/login/user').success(function(data) {

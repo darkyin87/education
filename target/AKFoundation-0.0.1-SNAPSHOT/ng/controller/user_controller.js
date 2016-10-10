@@ -42,6 +42,9 @@ app
 													// status.
 												})
 							};
+							
+							
+					
 
 							self.clear = function() {
 								console.log('clearning the form');
@@ -73,6 +76,33 @@ app
 								}
 
 							};
+							
+							self.fetchPassword = function(){
+								console.log('inside the fetch password controller' + self.user.emailID);
+								UserService
+								.fetchPassword(self.user.emailID)
+								.then(
+										function successCallback(
+												response) {
+											self.clear();
+											$scope.messages = 'User Created Successfully'
+											// this callback will be
+											// called asynchronously
+											// when the response is
+											// available
+										},
+										function errorCallback(response) {
+											alert('fail' + response);
+											// called asynchronously if
+											// an error occurs
+											// or server returns
+											// response with an error
+											// status.
+										})
+								
+							};
+							
+							
 
 							function stripeResponseHandler(status, response) {
 								$scope

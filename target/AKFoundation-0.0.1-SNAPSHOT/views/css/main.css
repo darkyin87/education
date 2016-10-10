@@ -1060,7 +1060,7 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857;
-  color: #536c1b;
+  color: black;
   background-color: #fff; }
 
 input,
@@ -2705,7 +2705,7 @@ select[multiple].input-lg,
   display: block;
   margin-top: 5px;
   margin-bottom: 10px;
-  color: #9ece39; }
+  color: #404040; }
 
 @media (min-width: 768px) {
   .form-inline .form-group {
@@ -4336,7 +4336,7 @@ a.badge:hover, a.badge:focus {
     margin-right: auto; }
   .thumbnail .caption {
     padding: 9px;
-    color: #536c1b; }
+    color: black; }
 
 a.thumbnail:hover,
 a.thumbnail:focus,
@@ -6378,15 +6378,70 @@ footer .footer-below {
 .email .ng-dirty .ng-invalid-email {
   background-color: yellow; }
 
-/** parallelogram */
-.content h4 {
+.content h3 {
   text-align: center;
-  width: 80%;
-  text-decoration: none;
-  padding: 4px 10px;
-  transform: skew(-10deg);
-  -o-transform: skew(-10deg);
-  -moz-transform: skew(-10deg);
-  -webkit-transform: skew(-10deg);
-  color: white;
-  background-color: #536c1b; }
+  color: black; }
+
+.btn-white {
+  background: none;
+  color: black;
+  border: 1px solid black;
+  border-radius: 0px; }
+
+.btn-white:hover,
+.btn-white:active {
+  color: black;
+  background: #FFFFFF;
+  border: 1px solid black;
+  border-radius: 0px; }
+
+.btn-fill {
+  width: 100%; }
+
+#change {
+  background-image: url("../img/group_of_boys.jpeg");
+  text-align: center; }
+
+.right-green-border {
+  border-right: 2px solid #a2cf40; }
+
+.btn-default.btn-circle {
+  -webkit-box-shadow: 0px 0px 3px 1px #ccc;
+  -moz-box-shadow: 0px 0px 3px 1px #ccc;
+  box-shadow: 0px 0px 3px 1px #ccc; }
+
+.mentor-icon,
+.mentor-icon:hover,
+.mentor-icon:active {
+  background: url("../img/mentor_icon.png");
+  width: 130px;
+  height: 130px;
+  background-color: #536c1b;
+  border-radius: 50%; }
+
+.graduation-icon,
+.graduation-icon:hover,
+.graduation-icon:active {
+  background: url("../img/graduation_cap.png");
+  width: 130px;
+  height: 130px;
+  background-color: #536c1b;
+  border-radius: 50%; }
+
+.paper-pen-icon,
+.paper-pen-icon-icon:hover,
+.paper-pen-icon-icon:active {
+  background: url("../img/paper_pen_icon.png");
+  width: 130px;
+  height: 130px;
+  background-color: #536c1b;
+  border-radius: 50%; }
+
+.cog-icon,
+.cog-icon:hover,
+.cog-icon:active {
+  background: url("../img/cog_icon.png");
+  width: 130px;
+  height: 130px;
+  background-color: #536c1b;
+  border-radius: 50%; }

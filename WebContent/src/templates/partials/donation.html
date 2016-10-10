@@ -5,10 +5,10 @@
             <div id="myCarousel" class="carousel slide" data-interval="5000" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" ng-repeat="(index, img) in images" ng-class="{active : ({{img[0]}} === 1)}" data-slide-to="{{index}}"></li>
+                    <li data-target="#myCarousel" ng-repeat="(index, img) in images" ng-class="{'active' : {{index == 0}} }" data-slide-to="{{index}}"></li>
                 </ol>
-                <div class="carousel-inner">
-                    <div class="item" ng-class="{active : ({{img[0]}} === 1)}" ng-repeat="img in images" completedPercent={{img[2]}}>
+                <div class="carousel-inner" role="listbox">
+                    <div class="item" ng-class="{'active' : {{index == 0}} }" ng-repeat="(index, img) in images" completedPercent={{img[2]}}>
                         <img ng-src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-713889091780/images/{{img[1]}}.jpg" alt="Slide numder {{img[0]}}" />
                         <div class="container">
                           <div class="carousel-caption">
@@ -18,8 +18,10 @@
                         </div>
                     </div>
 
-                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span><span class="sr-only">Previous</span></a> 
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span><span class="sr-only">Next</span></a>
+                
+           	</div>
             <div class="progress">
                 <div class="progress-bar " role="progressbar" aria-valuenow="{{images[0][2]}}" aria-valuemin="0" aria-valuemax="100" style="width:{{images[0][2]}}%">
                     <span id="completedPercent>{{images[0][2]}}% reached</span>
